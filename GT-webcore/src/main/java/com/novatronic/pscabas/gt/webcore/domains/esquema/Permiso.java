@@ -1,19 +1,16 @@
 package com.novatronic.pscabas.gt.webcore.domains.esquema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement
+@Root(name = "PERMISO")
 public class Permiso {
-	
-	@XmlAttribute
-	protected String nombre;
-	
-	@XmlAttribute
-	protected String mnemotico;
+
+	@Attribute(name = "nombre")
+	private String nombre;
+
+	@Attribute(name = "mnemonico")
+	private String mnemonico;
 
 	public String getNombre() {
 		return nombre;
@@ -23,12 +20,12 @@ public class Permiso {
 		this.nombre = nombre;
 	}
 
-	public String getMnemotico() {
-		return mnemotico;
+	public String getMnemonico() {
+		return mnemonico;
 	}
 
-	public void setMnemotico(String mnemotico) {
-		this.mnemotico = mnemotico;
+	public void setMnemonico(String mnemonico) {
+		this.mnemonico = mnemonico;
 	}
 
 }

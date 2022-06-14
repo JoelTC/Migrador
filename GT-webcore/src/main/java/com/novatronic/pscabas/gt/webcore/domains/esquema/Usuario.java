@@ -1,47 +1,53 @@
 package com.novatronic.pscabas.gt.webcore.domains.esquema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "USUARIO", propOrder = {
-    "USUARIOROL"
-})
-@XmlRootElement
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
+@Root(name = "USUARIO")
 public class Usuario {
-	@XmlAttribute
-	protected String nombre;
-	
-	@XmlAttribute
-	protected String usuario;
-	
-	@XmlAttribute
-	protected String apellidoPaterno;
-	
-	@XmlAttribute
-	protected String apellidoMaterno;
-	
-	@XmlAttribute
-	protected String telefono;
-	
-	@XmlAttribute
-	protected String tipoDocumento;
-	
-	@XmlAttribute
-	protected String numeroDocumento;
-	
-	@XmlAttribute
-	protected String correo;
-	
-	@XmlAttribute
-	protected String contrasena;
-	
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillableUsuarioRol usuarioRol;
+	@Attribute(name = "nombre")
+	private String nombre;
+
+	@Attribute(name = "usuario")
+	private String usuario;
+
+	@Attribute(name = "apellidopaterno")
+	private String apellidoPaterno;
+
+	@Attribute(name = "apellidomaterno")
+	private String apellidoMaterno;
+
+	@Attribute(name = "fechanacimiento", required = false)
+	private String fechanacimiento;
+
+	public String getFechanacimiento() {
+		return fechanacimiento;
+	}
+
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
+	}
+
+	@Attribute(name = "telefono")
+	private String telefono;
+
+	@Attribute(name = "tipodocumento")
+	private String tipoDocumento;
+
+	@Attribute(name = "numerodocumento")
+	private String numeroDocumento;
+
+	@Attribute(name = "correo")
+	private String correo;
+
+	@Attribute(name = "contrasena")
+	private String contrasena;
+
+	@ElementList(name = "USUARIOROL", inline = true, required = false)
+	private List<UsuarioRol> lUsuarioRol;
 
 	public String getNombre() {
 		return nombre;
@@ -115,12 +121,12 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}
 
-	public ArrayOfTns2NillableUsuarioRol getUsuarioRol() {
-		return usuarioRol;
+	public List<UsuarioRol> getlUsuarioRol() {
+		return lUsuarioRol;
 	}
 
-	public void setUsuarioRol(ArrayOfTns2NillableUsuarioRol usuarioRol) {
-		this.usuarioRol = usuarioRol;
+	public void setlUsuarioRol(List<UsuarioRol> lUsuarioRol) {
+		this.lUsuarioRol = lUsuarioRol;
 	}
-	
+
 }

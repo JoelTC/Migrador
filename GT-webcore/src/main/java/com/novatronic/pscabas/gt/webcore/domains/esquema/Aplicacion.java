@@ -1,30 +1,25 @@
 package com.novatronic.pscabas.gt.webcore.domains.esquema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "APLICACION", propOrder = {
-    "PERMISO", "ROL"
-})
-@XmlRootElement
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
+@Root(name = "APLICACION")
 public class Aplicacion {
-	
-	@XmlAttribute
-	protected String nombre;
-	
-	@XmlAttribute
-	protected String mnemotico;
 
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillablePermiso permiso;
-	
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillableRol rol;
+	@Attribute(name = "nombre")
+	private String nombre;
+
+	@Attribute(name = "mnemonico")
+	private String mnemonico;
+
+	@ElementList(name = "PERMISO", inline = true, required = false)
+	private List<Permiso> lPermiso;
+
+	@ElementList(name = "ROL", inline = true, required = false)
+	private List<Rol> lRol;
 
 	public String getNombre() {
 		return nombre;
@@ -34,28 +29,28 @@ public class Aplicacion {
 		this.nombre = nombre;
 	}
 
-	public String getMnemotico() {
-		return mnemotico;
+	public String getMnemonico() {
+		return mnemonico;
 	}
 
-	public void setMnemotico(String mnemotico) {
-		this.mnemotico = mnemotico;
+	public void setMnemonico(String mnemonico) {
+		this.mnemonico = mnemonico;
 	}
 
-	public ArrayOfTns2NillablePermiso getPermiso() {
-		return permiso;
+	public List<Permiso> getlPermiso() {
+		return lPermiso;
 	}
 
-	public void setPermiso(ArrayOfTns2NillablePermiso permiso) {
-		this.permiso = permiso;
+	public void setlPermiso(List<Permiso> lPermiso) {
+		this.lPermiso = lPermiso;
 	}
 
-	public ArrayOfTns2NillableRol getRol() {
-		return rol;
+	public List<Rol> getlRol() {
+		return lRol;
 	}
 
-	public void setRol(ArrayOfTns2NillableRol rol) {
-		this.rol = rol;
+	public void setlRol(List<Rol> lRol) {
+		this.lRol = lRol;
 	}
-	
+
 }

@@ -43,20 +43,20 @@ public class FileServiceImpl implements FileService {
 		try {
 			rutaFolder = Paths.get(path);
 			nombreArchivo = manejoNombre(file.getOriginalFilename(), 0);
-			archivo = new File(this.rootFolder.toAbsolutePath() + "\\" + nombreArchivo);
+			archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 
 			if (!archivo.exists()) {
-				Files.copy(file.getInputStream(), this.rootFolder.resolve(nombreArchivo));
+				Files.copy(file.getInputStream(), rutaFolder.resolve(nombreArchivo));
 				return "Los archivos fueron cargados correctamente al servidor";
 			} else {
 				boolean f = true;
 				int i = 1;
 				while (f) {
 					nombreArchivo = manejoNombre(file.getOriginalFilename(), i);
-					archivo = new File(this.rootFolder.toAbsolutePath() + "\\" + nombreArchivo);
+					archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 
 					if (!archivo.exists()) {
-						Files.copy(file.getInputStream(), this.rootFolder.resolve(nombreArchivo));
+						Files.copy(file.getInputStream(), rutaFolder.resolve(nombreArchivo));
 						f = false;
 						return "Los archivos fueron cargados correctamente al servidor";
 					}

@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Empresa;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.AplicacionMigradorService;
+import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
 @RestController
-@RequestMapping("api/gt-webcore/v1/aplicacion")
-public class AplicacionMigradorController {
+@RequestMapping("api/gt-webcore/v1/empresa")
+public class EmpresaMigradorController {
 	
 	@Autowired
-	private AplicacionMigradorService aplicacionMigradorService;
+	private EmpresaMigradorService empresaMigradorService;
 	
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/migrar")
-	public Response<Empresa> migrarAplicacion() throws MigradorException {
-		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", aplicacionMigradorService.convertirAplicacion());
+	public Response<Empresa> migrarEmpresa() throws MigradorException {
+		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", empresaMigradorService.convertirEmpresa());
 	}
 
 }

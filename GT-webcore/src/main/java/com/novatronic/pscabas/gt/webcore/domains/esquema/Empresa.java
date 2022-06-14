@@ -1,33 +1,28 @@
 package com.novatronic.pscabas.gt.webcore.domains.esquema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "EMPRESA", propOrder = {
-    "APLICACION", "USUARIO"
-})
-@XmlRootElement
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
+@Root(name = "EMPRESA")
 public class Empresa {
 
-	@XmlAttribute
-	protected String nombre;
-	
-	@XmlAttribute
-	protected String mnemotico;
-	
-	@XmlAttribute
-	protected String cifrado;
-	
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillableAplicacion aplicacion;
-	
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillableUsuario usuario;
+	@Attribute(name = "nombre")
+	private String nombre;
+
+	@Attribute(name = "mnemonico")
+	private String mnemonico;
+
+	@Attribute(name = "cifrado")
+	private String cifrado;
+
+	@ElementList(name = "APLICACION", inline = true, required = false)
+	private List<Aplicacion> lAplicacion;
+
+	@ElementList(name = "USUARIO", inline = true, required = false)
+	private List<Usuario> lUsuario;
 
 	public String getNombre() {
 		return nombre;
@@ -37,12 +32,12 @@ public class Empresa {
 		this.nombre = nombre;
 	}
 
-	public String getMnemotico() {
-		return mnemotico;
+	public String getMnemonico() {
+		return mnemonico;
 	}
 
-	public void setMnemotico(String mnemotico) {
-		this.mnemotico = mnemotico;
+	public void setMnemonico(String mnemonico) {
+		this.mnemonico = mnemonico;
 	}
 
 	public String getCifrado() {
@@ -53,20 +48,20 @@ public class Empresa {
 		this.cifrado = cifrado;
 	}
 
-	public ArrayOfTns2NillableAplicacion getAplicacion() {
-		return aplicacion;
+	public List<Aplicacion> getlAplicacion() {
+		return lAplicacion;
 	}
 
-	public void setAplicacion(ArrayOfTns2NillableAplicacion aplicacion) {
-		this.aplicacion = aplicacion;
+	public void setlAplicacion(List<Aplicacion> lAplicacion) {
+		this.lAplicacion = lAplicacion;
 	}
 
-	public ArrayOfTns2NillableUsuario getUsuario() {
-		return usuario;
+	public List<Usuario> getlUsuario() {
+		return lUsuario;
 	}
 
-	public void setUsuario(ArrayOfTns2NillableUsuario usuario) {
-		this.usuario = usuario;
+	public void setlUsuario(List<Usuario> lUsuario) {
+		this.lUsuario = lUsuario;
 	}
 
 }

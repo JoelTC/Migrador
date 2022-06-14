@@ -1,26 +1,21 @@
 package com.novatronic.pscabas.gt.webcore.domains.esquema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ROL", propOrder = {
-    "ROLPERMISO"
-})
-@XmlRootElement
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
+@Root(name = "ROL")
 public class Rol {
-	@XmlAttribute
-	protected String nombre;
-	
-	@XmlAttribute
-	protected String mnemotico;
-	
-	@XmlElement(required = true, nillable = true)
-    protected ArrayOfTns2NillableRolPermiso rolPermiso;
+	@Attribute(name = "nombre")
+	private String nombre;
+
+	@Attribute(name = "mnemonico")
+	private String mnemonico;
+
+	@ElementList(name = "ROLPERMISO", inline = true, required = false)
+	private List<RolPermiso> lRolPermiso;
 
 	public String getNombre() {
 		return nombre;
@@ -30,20 +25,20 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
-	public String getMnemotico() {
-		return mnemotico;
+	public String getMnemonico() {
+		return mnemonico;
 	}
 
-	public void setMnemotico(String mnemotico) {
-		this.mnemotico = mnemotico;
+	public void setMnemonico(String mnemonico) {
+		this.mnemonico = mnemonico;
 	}
 
-	public ArrayOfTns2NillableRolPermiso getRolPermiso() {
-		return rolPermiso;
+	public List<RolPermiso> getlRolPermiso() {
+		return lRolPermiso;
 	}
 
-	public void setRolPermiso(ArrayOfTns2NillableRolPermiso rolPermiso) {
-		this.rolPermiso = rolPermiso;
+	public void setlRolPermiso(List<RolPermiso> lRolPermiso) {
+		this.lRolPermiso = lRolPermiso;
 	}
 
 }
