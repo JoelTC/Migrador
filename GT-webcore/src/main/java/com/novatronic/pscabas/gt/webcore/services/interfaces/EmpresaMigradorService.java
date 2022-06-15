@@ -1,9 +1,9 @@
 package com.novatronic.pscabas.gt.webcore.services.interfaces;
 
-import com.novatronic.pscabas.gt.webcore.domains.esquema.Empresa;
+import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 
 public interface EmpresaMigradorService {
 	
-	public Empresa convertirEmpresa();
+	public DocEmpresa migrarEmpresa();
 
 }

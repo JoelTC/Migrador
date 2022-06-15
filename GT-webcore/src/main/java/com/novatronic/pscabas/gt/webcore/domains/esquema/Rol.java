@@ -13,6 +13,9 @@ public class Rol {
 
 	@Attribute(name = "mnemonico")
 	private String mnemonico;
+	
+	@Attribute(name = "tipo", required = false)
+	private String tipo;
 
 	@ElementList(name = "ROLPERMISO", inline = true, required = false)
 	private List<RolPermiso> lRolPermiso;
@@ -33,6 +36,14 @@ public class Rol {
 		this.mnemonico = mnemonico;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public List<RolPermiso> getlRolPermiso() {
 		return lRolPermiso;
 	}
@@ -40,5 +51,4 @@ public class Rol {
 	public void setlRolPermiso(List<RolPermiso> lRolPermiso) {
 		this.lRolPermiso = lRolPermiso;
 	}
-
 }

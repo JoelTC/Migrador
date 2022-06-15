@@ -7,7 +7,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 @Root(name = "EMPRESA")
-public class Empresa {
+public class DocEmpresa {
 
 	@Attribute(name = "nombre")
 	private String nombre;

@@ -7,26 +7,23 @@ import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.stream.Format;
 import org.springframework.stereotype.Service;
 
-import com.novatronic.pscabas.gt.webcore.domains.esquema.Empresa;
+import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
 @Service
 public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
 
-	@Override
-	public Empresa convertirEmpresa() {
-		try {
-			Format formato = new Format("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); //Formato para el documento xml
-			
-			Serializer serializer = new Persister(formato); //Librería para serializar y deserializar los archivos xml
-			
-			Empresa empresa = serializer.read(Empresa.class, FileServiceImpl.archivo); //Deserializa el archivo y lo conviete en el objeto empresa
-			
-			File result = new File(FileServiceImpl.rutaFolder + "\\example.xml");
+	private Serializer serializer;
+	private Format formato;
 
-			serializer.write(empresa, result);
+	@Override
+	public DocEmpresa migrarEmpresa() {
+		try {
+			serializer = new Persister();
 			
-			
+			// Deserializa el archivo y lo conviete en el objeto empresa
+			DocEmpresa empresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo); 
+			gestionarArchivos(empresa);
 			return empresa;
 
 		} catch (Exception e) {
@@ -34,5 +31,17 @@ public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
 			System.out.print(e);
 			return null;
 		}
+	}
+
+	private void gestionarArchivos(DocEmpresa empresa) throws Exception {
+
+		if(FileServiceImpl.archivo.exists()) {
+			FileServiceImpl.archivo.delete();
+		}
+		
+		formato = new Format("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); // Formato para el documento xml
+		serializer = new Persister(formato);
+		File result = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);
+		serializer.write(empresa, result);
 	}
 }

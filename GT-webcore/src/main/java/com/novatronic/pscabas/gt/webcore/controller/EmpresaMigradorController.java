@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.novatronic.pscabas.gt.webcore.domains.esquema.Empresa;
+import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
@@ -21,8 +21,8 @@ public class EmpresaMigradorController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/migrar")
-	public Response<Empresa> migrarEmpresa() throws MigradorException {
-		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", empresaMigradorService.convertirEmpresa());
+	public Response<DocEmpresa> migrarEmpresa() throws MigradorException {
+		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", empresaMigradorService.migrarEmpresa());
 	}
 
 }
