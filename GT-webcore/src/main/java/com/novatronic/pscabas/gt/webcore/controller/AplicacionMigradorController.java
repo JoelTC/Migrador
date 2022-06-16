@@ -22,8 +22,8 @@ public class AplicacionMigradorController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/migrar")
-	public Response<DocAplicacion> migrarEmpresa(@RequestParam("tipo") String tipo, @RequestParam("version") String version) throws MigradorException {
-		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", aplicacionMigradorService.migrarAplicacion(tipo, version));
+	public Response<DocAplicacion> migrarAplicacion(@RequestParam("version") String version,@RequestParam("tipo") String tipo) throws MigradorException {
+		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", aplicacionMigradorService.migrarAplicacion(version, tipo));
 	}
-
+	
 }

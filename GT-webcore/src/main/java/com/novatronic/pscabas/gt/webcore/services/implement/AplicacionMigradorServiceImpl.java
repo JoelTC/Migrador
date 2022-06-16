@@ -19,33 +19,27 @@ public class AplicacionMigradorServiceImpl implements AplicacionMigradorService 
 	private Format formato;
 
 	@Override
-	public DocAplicacion migrarAplicacion(String tipo, String version) {
+	public DocAplicacion migrarAplicacion(String version, String tipo) {
 		try {
 
 			serializer = new Persister();
 
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
-			DocAplicacion aplicacion = serializer.read(DocAplicacion.class, FileServiceImpl.archivo);
-			System.out.println(version);
+			DocAplicacion docAplicacion = serializer.read(DocAplicacion.class, FileServiceImpl.archivo);
 
 			switch (version) {
 			case "2.1":
-				System.out.println("Tipo: " + tipo + "Version: " + version);
-				aplicacion = convertirTipoVersion21(aplicacion, tipo);
+				docAplicacion = convertirVersion21(docAplicacion, tipo);
 				break;
-				
+
 			case "2.3":
-				System.out.println("Tipo: " + tipo + "Version: " + version);
-				aplicacion = convertirTipoVersion23(aplicacion, tipo);
+				docAplicacion = convertirVersion23(docAplicacion, tipo);
 				break;
+
 			}
 
-			if (version.equals("2.1")) {
-			}
-
-			gestionarArchivos(aplicacion);
-
-			return aplicacion;
+			gestionarArchivos(docAplicacion);
+			return docAplicacion;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,19 +47,19 @@ public class AplicacionMigradorServiceImpl implements AplicacionMigradorService 
 			return null;
 		}
 	}
+	
+	private DocAplicacion convertirVersion21(DocAplicacion docAplicacion, String tipo) {
 
-	private DocAplicacion convertirTipoVersion21(DocAplicacion aplicacion, String tipo) {
-
-		for (Rol rol : aplicacion.getAplicacion().getlRol()) {
+		for (Rol rol : docAplicacion.getAplicacion().getlRol()) {
 			rol.setTipo(tipo);
 		}
 
-		return convertirTipoVersion23(aplicacion, tipo);
+		return convertirVersion23(docAplicacion, tipo);
 	}
 
-	private DocAplicacion convertirTipoVersion23(DocAplicacion aplicacion, String tipo) {
+	private DocAplicacion convertirVersion23(DocAplicacion docAplicacion, String tipo) {
 
-		for (Permiso permiso : aplicacion.getAplicacion().getlPermiso()) {
+		for (Permiso permiso : docAplicacion.getAplicacion().getlPermiso()) {
 			permiso.setEstado("HABILITADO");
 			permiso.setTipo(tipo);
 			permiso.setTipoOpc(null);
@@ -74,10 +68,10 @@ public class AplicacionMigradorServiceImpl implements AplicacionMigradorService 
 			permiso.setConfiguracion("");
 		}
 
-		return aplicacion;
+		return docAplicacion;
 	}
 
-	private void gestionarArchivos(DocAplicacion aplicacion) throws Exception {
+	private void gestionarArchivos(DocAplicacion docAplicacion) throws Exception {
 
 		if (FileServiceImpl.archivo.exists()) {
 			FileServiceImpl.archivo.delete();
@@ -86,7 +80,7 @@ public class AplicacionMigradorServiceImpl implements AplicacionMigradorService 
 		formato = new Format("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); // Formato para el documento xml
 		serializer = new Persister(formato);
 		File result = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);
-		serializer.write(aplicacion, result);
+		serializer.write(docAplicacion, result);
 	}
 
 }

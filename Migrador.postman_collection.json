@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "23874108-d4ac-42c0-bcd0-a396cdd50d94",
+		"name": "Migrador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10379575"
+	},
+	"item": [
+		{
+			"name": "Empresa",
+			"item": [
+				{
+					"name": "EmpresaMigrarAPILocal",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"version\": \"2.1\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"migrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EmpresaMigrarAPIServer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"migrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarAplicacionApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarAplicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"listarAplicacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Aplicacion",
+			"item": [
+				{
+					"name": "AplicacionMigrarAPILocal",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tipo",
+									"value": "OPCION",
+									"type": "text"
+								},
+								{
+									"key": "version",
+									"value": "2.1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/aplicacion/migrar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"aplicacion",
+								"migrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AplicacionMigrarAPIServer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "tipo",
+									"value": "OPCION",
+									"type": "text"
+								},
+								{
+									"key": "version",
+									"value": "2.3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://172.29.42.13:8080/GT-webcore-1.0.0/api/gt-webcore/v1/aplicacion/migrar",
+							"protocol": "http",
+							"host": [
+								"172",
+								"29",
+								"42",
+								"13"
+							],
+							"port": "8080",
+							"path": [
+								"GT-webcore-1.0.0",
+								"api",
+								"gt-webcore",
+								"v1",
+								"aplicacion",
+								"migrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FileApiLocal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.1.xml"
+						},
+						{
+							"key": "path",
+							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/gt-webcore/v1/file/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gt-webcore",
+						"v1",
+						"file",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileApiServer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-aplicacion 2.1.xml"
+						},
+						{
+							"key": "path",
+							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://172.29.42.13:8080/GT-webcore/api/gt-webcore/v1/file/upload",
+					"protocol": "http",
+					"host": [
+						"172",
+						"29",
+						"42",
+						"13"
+					],
+					"port": "8080",
+					"path": [
+						"GT-webcore",
+						"api",
+						"gt-webcore",
+						"v1",
+						"file",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

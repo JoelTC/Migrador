@@ -75,9 +75,9 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public Resource load(String name) throws MigradorException {
 		try {
-			archivo = new File(rootFolder.toAbsolutePath() + "\\" + name);
+			archivo = new File(rutaFolder + "\\" + name);
 			if (archivo.exists()) {
-				Path file = rootFolder.resolve(name);
+				Path file = rutaFolder.resolve(name);
 				Resource resource = new UrlResource(file.toUri());
 				return resource;
 			} else {

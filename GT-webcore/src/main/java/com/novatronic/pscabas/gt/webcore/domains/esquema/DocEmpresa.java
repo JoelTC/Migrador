@@ -20,6 +20,9 @@ public class DocEmpresa {
 
 	@ElementList(name = "APLICACION", inline = true, required = false)
 	private List<Aplicacion> lAplicacion;
+	
+	@ElementList(name = "ROLPADRE", inline = true, required = false)
+	private List<RolPadre> lRolPadre;
 
 	@ElementList(name = "USUARIO", inline = true, required = false)
 	private List<Usuario> lUsuario;
@@ -54,6 +57,14 @@ public class DocEmpresa {
 
 	public void setlAplicacion(List<Aplicacion> lAplicacion) {
 		this.lAplicacion = lAplicacion;
+	}
+
+	public List<RolPadre> getlRolPadre() {
+		return lRolPadre;
+	}
+
+	public void setlRolPadre(List<RolPadre> lRolPadre) {
+		this.lRolPadre = lRolPadre;
 	}
 
 	public List<Usuario> getlUsuario() {

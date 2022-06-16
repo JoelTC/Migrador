@@ -21,15 +21,7 @@ public class Usuario {
 	private String apellidoMaterno;
 
 	@Attribute(name = "fechanacimiento", required = false)
-	private String fechanacimiento;
-
-	public String getFechanacimiento() {
-		return fechanacimiento;
-	}
-
-	public void setFechanacimiento(String fechanacimiento) {
-		this.fechanacimiento = fechanacimiento;
-	}
+	private String fechaNacimiento;
 
 	@Attribute(name = "telefono")
 	private String telefono;
@@ -45,6 +37,9 @@ public class Usuario {
 
 	@Attribute(name = "contrasena")
 	private String contrasena;
+
+	@Attribute(name = "rolmnemonico", required = false)
+	private String rolMnemonico;
 
 	@ElementList(name = "USUARIOROL", inline = true, required = false)
 	private List<UsuarioRol> lUsuarioRol;
@@ -79,6 +74,14 @@ public class Usuario {
 
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
+	}
+
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public String getTelefono() {
@@ -119,6 +122,14 @@ public class Usuario {
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public String getRolMnemonico() {
+		return rolMnemonico;
+	}
+
+	public void setRolMnemonico(String rolMnemonico) {
+		this.rolMnemonico = rolMnemonico;
 	}
 
 	public List<UsuarioRol> getlUsuarioRol() {

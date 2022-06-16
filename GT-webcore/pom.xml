@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.novatronic.pscabas</groupId>
 	<artifactId>GT-webcore</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>GT-webcore</name>
 	<description>Modulo para la gestion de templates</description>
