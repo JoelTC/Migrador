@@ -8,10 +8,10 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "ROL")
 public class Rol {
-	@Attribute(name = "nombre")
+	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
-	@Attribute(name = "mnemonico")
+	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 	
 	@Attribute(name = "tipo", required = false)
@@ -50,5 +50,10 @@ public class Rol {
 
 	public void setlRolPermiso(List<RolPermiso> lRolPermiso) {
 		this.lRolPermiso = lRolPermiso;
+	}
+	
+	@Override
+	public String toString() {
+		return nombre + " - " + mnemonico;
 	}
 }

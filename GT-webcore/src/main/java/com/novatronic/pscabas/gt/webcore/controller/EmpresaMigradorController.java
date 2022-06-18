@@ -24,10 +24,6 @@ public class EmpresaMigradorController {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/migrar")
 	public Response<DocEmpresa> migrarEmpresa(@RequestBody MigradorEmpresa mEmpresa) throws MigradorException {
-		/*
-		 * @RequestParam("version") String version, @RequestParam("rolPadre") String
-		 * rolPadre, @RequestParam("tipo") String tipo
-		 */
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", empresaMigradorService.migrarEmpresa(mEmpresa));
 	}
 

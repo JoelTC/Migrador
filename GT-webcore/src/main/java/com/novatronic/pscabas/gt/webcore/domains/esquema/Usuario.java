@@ -8,34 +8,34 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "USUARIO")
 public class Usuario {
-	@Attribute(name = "nombre")
+	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
-	@Attribute(name = "usuario")
+	@Attribute(name = "usuario", required = false)
 	private String usuario;
 
-	@Attribute(name = "apellidopaterno")
+	@Attribute(name = "apellidopaterno", required = false)
 	private String apellidoPaterno;
 
-	@Attribute(name = "apellidomaterno")
+	@Attribute(name = "apellidomaterno", required = false)
 	private String apellidoMaterno;
 
 	@Attribute(name = "fechanacimiento", required = false)
 	private String fechaNacimiento;
 
-	@Attribute(name = "telefono")
+	@Attribute(name = "telefono", required = false)
 	private String telefono;
 
-	@Attribute(name = "tipodocumento")
+	@Attribute(name = "tipodocumento", required = false)
 	private String tipoDocumento;
 
-	@Attribute(name = "numerodocumento")
+	@Attribute(name = "numerodocumento", required = false)
 	private String numeroDocumento;
 
-	@Attribute(name = "correo")
+	@Attribute(name = "correo", required = false)
 	private String correo;
 
-	@Attribute(name = "contrasena")
+	@Attribute(name = "contrasena", required = false)
 	private String contrasena;
 
 	@Attribute(name = "rolmnemonico", required = false)

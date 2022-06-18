@@ -52,4 +52,8 @@ public class RolPadre {
 		this.lRolPorRol = lRolPorRol;
 	}
 
+	@Override
+	public String toString() {
+		return nombre + " - " + mnemonico;
+	}
 }

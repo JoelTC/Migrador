@@ -4,11 +4,11 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(name = "ROLPORROL")
-public class RolPorRol {
-	@Attribute(name = "nombre")
+public class RolPorRol{
+	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
-	@Attribute(name = "mnemonico")
+	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 
 	@Attribute(name = "mnemonicoaplicacion", required = false)
@@ -36,6 +36,11 @@ public class RolPorRol {
 
 	public void setMnemonicoaplicacion(String mnemonicoaplicacion) {
 		this.mnemonicoaplicacion = mnemonicoaplicacion;
+	}
+
+	@Override
+	public String toString() {
+		return nombre + " - " + mnemonico;
 	}
 
 }

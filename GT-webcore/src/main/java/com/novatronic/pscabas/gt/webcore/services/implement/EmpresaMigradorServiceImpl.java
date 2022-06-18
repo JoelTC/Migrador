@@ -21,7 +21,7 @@ import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresa;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
 @Service
-public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
+public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 
 	private Serializer serializer;
 	private Format formato;
@@ -88,8 +88,10 @@ public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
 
 	private DocEmpresa convertirVersion21(DocEmpresa docEmpresa, String tipo, String fecha, String rolPadre) {
 		for (Aplicacion app : docEmpresa.getlAplicacion()) {
-			for (Rol rol : app.getlRol()) {
-				rol.setTipo(tipo);
+			if (app.getlRol() != null) {
+				for (Rol rol : app.getlRol()) {
+					rol.setTipo(tipo);
+				}
 			}
 		}
 
@@ -103,13 +105,15 @@ public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
 	private DocEmpresa convertirVersion23(DocEmpresa docEmpresa, String tipo, String rolPadre) {
 
 		for (Aplicacion app : docEmpresa.getlAplicacion()) {
-			for (Permiso permiso : app.getlPermiso()) {
-				permiso.setEstado("HABILITADO");
-				permiso.setTipo(tipo);
-				permiso.setTipoOpc(null);
-				permiso.setTipoOpcion(tipo);
-				permiso.setDataSeg(null);
-				permiso.setConfiguracion("");
+			if (app.getlPermiso() != null) {
+				for (Permiso permiso : app.getlPermiso()) {
+					permiso.setEstado("HABILITADO");
+					permiso.setTipo(tipo);
+					permiso.setTipoOpc(null);
+					permiso.setTipoOpcion(tipo);
+					permiso.setDataSeg(null);
+					permiso.setConfiguracion("");
+				}
 			}
 		}
 
@@ -117,46 +121,94 @@ public class EmpresaMidradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	private DocEmpresa agregarRolPadre(DocEmpresa docEmpresa, String tipo) {
-		String mnemonicoAp;
+
+		// Lógica para registrar el lemento USUARIOROL en el elemento ROLPORROL
 		List<RolPadre> lRolPadre = new ArrayList<RolPadre>();
 		int i = 1;
-
 		for (Usuario user : docEmpresa.getlUsuario()) {
 			List<RolPorRol> lrolXrol = new ArrayList<RolPorRol>();
-
-			RolPadre rolPadre = new RolPadre();
-
-			rolPadre.setNombre("RolAgrupador_" + i);
-			rolPadre.setMnemonico("RolAgrupador_" + i);
-			rolPadre.setTipo(tipo);
-
-			if (user.getlUsuarioRol() != null) {
-				for (UsuarioRol uRol : user.getlUsuarioRol()) {
-					RolPorRol rolXrol = new RolPorRol();
-
-					rolXrol.setNombre(uRol.getNombre());
-					rolXrol.setMnemonico(uRol.getmnemonico());
-					lrolXrol.add(rolXrol);
+			boolean a = false;
+			if (lRolPadre.size() > 0) {
+				for (RolPadre rp : lRolPadre) {
+					if (user.getlUsuarioRol() != null
+							&& !rp.getlRolPorRol().toString().equals(user.getlUsuarioRol().toString())) {
+						a = true;
+					} else {
+						a = false;
+						break;
+					}
 				}
 
-				rolPadre.setlRolPorRol(lrolXrol);
-				lRolPadre.add(rolPadre);
-				i++;
+				if (a) {
+					RolPadre rolPadre = new RolPadre();
+					if (user.getlUsuarioRol() != null) {
+
+						for (UsuarioRol uRol : user.getlUsuarioRol()) {
+							RolPorRol rolXrol = new RolPorRol();
+
+							rolXrol.setNombre(uRol.getNombre());
+							rolXrol.setMnemonico(uRol.getmnemonico());
+							lrolXrol.add(rolXrol);
+						}
+
+						rolPadre.setNombre("RolAgrupador_" + i);
+						rolPadre.setMnemonico("RolAgrupador_" + i);
+						rolPadre.setTipo(tipo);
+
+						rolPadre.setlRolPorRol(lrolXrol);
+						lRolPadre.add(rolPadre);
+						i++;
+					}
+				}
+			} else {
+				RolPadre rolPadre = new RolPadre();
+				if (user.getlUsuarioRol() != null) {
+					for (UsuarioRol uRol : user.getlUsuarioRol()) {
+						RolPorRol rolXrol = new RolPorRol();
+
+						rolXrol.setNombre(uRol.getNombre());
+						rolXrol.setMnemonico(uRol.getmnemonico());
+						lrolXrol.add(rolXrol);
+					}
+					rolPadre.setNombre("RolAgrupador_" + i);
+					rolPadre.setMnemonico("RolAgrupador_" + i);
+					rolPadre.setTipo(tipo);
+
+					rolPadre.setlRolPorRol(lrolXrol);
+					lRolPadre.add(rolPadre);
+					i++;
+				}
 			}
-			
-			//user.setlUsuarioRol(null);
 		}
 
+		// Se setea la lista de ROLPADRE al documento
 		docEmpresa.setlRolPadre(lRolPadre);
+		return agregarRolMnemonico(docEmpresa);
+	}
+
+	private DocEmpresa agregarRolMnemonico(DocEmpresa docEmpresa) {
+		// Se le asigna un rol agrupador a los usuarios de acuerto al usuario rol
+		for (Usuario user : docEmpresa.getlUsuario()) {
+			if (user.getlUsuarioRol() != null) {
+				for (RolPadre rPadre : docEmpresa.getlRolPadre()) {
+					if (user.getlUsuarioRol().toString().equals(rPadre.getlRolPorRol().toString())) {
+						user.setRolMnemonico(rPadre.getMnemonico());
+					}
+				}
+				user.setlUsuarioRol(null);
+			}
+		}
 		return docEmpresa;
 	}
 
 	private void gestionarArchivos(DocEmpresa empresa) throws Exception {
 
+		// Se elimina el archivo de respaldo para guardad el final
 		if (FileServiceImpl.archivo.exists()) {
 			FileServiceImpl.archivo.delete();
 		}
 
+		// Etiqueta superior del documento
 		formato = new Format("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); // Formato para el documento xml
 		serializer = new Persister(formato);
 		File result = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);

@@ -6,10 +6,10 @@ import org.simpleframework.xml.Root;
 @Root(name = "USUARIOROL")
 public class UsuarioRol {
 
-	@Attribute(name = "nombre")
+	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
-	@Attribute(name = "mnemonico")
+	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 
 	public String getNombre() {
@@ -28,4 +28,8 @@ public class UsuarioRol {
 		this.mnemonico = mnemonico;
 	}
 
+	@Override
+	public String toString() {
+		return nombre + " - " + mnemonico;
+	}
 }

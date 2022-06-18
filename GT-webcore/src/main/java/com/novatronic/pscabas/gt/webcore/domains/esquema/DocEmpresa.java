@@ -9,13 +9,13 @@ import org.simpleframework.xml.Root;
 @Root(name = "EMPRESA")
 public class DocEmpresa {
 
-	@Attribute(name = "nombre")
+	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
-	@Attribute(name = "mnemonico")
+	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 
-	@Attribute(name = "cifrado")
+	@Attribute(name = "cifrado", required = false)
 	private String cifrado;
 
 	@ElementList(name = "APLICACION", inline = true, required = false)
