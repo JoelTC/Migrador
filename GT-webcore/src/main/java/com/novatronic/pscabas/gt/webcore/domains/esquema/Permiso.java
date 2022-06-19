@@ -98,5 +98,4 @@ public class Permiso {
 	public String toString() {
 		return nombre + " - " + mnemonico;
 	}
-
 }

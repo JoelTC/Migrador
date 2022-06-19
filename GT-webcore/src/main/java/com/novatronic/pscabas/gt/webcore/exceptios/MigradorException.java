@@ -35,5 +35,4 @@ public class MigradorException extends Exception{
 	public List<ErrorDTO> getErrorList() {
 		return errorList;
 	}
-
 }

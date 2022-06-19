@@ -8,6 +8,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "ROLPADRE")
 public class RolPadre {
+	
 	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 	

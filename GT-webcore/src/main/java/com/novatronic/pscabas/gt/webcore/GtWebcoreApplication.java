@@ -17,5 +17,4 @@ public class GtWebcoreApplication extends SpringBootServletInitializer {
 		SpringApplication.run(GtWebcoreApplication.class, args);
 		System.out.println("success");
 	}
-
 }

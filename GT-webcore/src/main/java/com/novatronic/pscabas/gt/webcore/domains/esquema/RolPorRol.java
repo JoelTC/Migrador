@@ -5,6 +5,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "ROLPORROL")
 public class RolPorRol{
+	
 	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
@@ -42,5 +43,4 @@ public class RolPorRol{
 	public String toString() {
 		return nombre + " - " + mnemonico;
 	}
-
 }

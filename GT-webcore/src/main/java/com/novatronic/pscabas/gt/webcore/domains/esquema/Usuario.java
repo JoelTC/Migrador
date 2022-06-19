@@ -8,6 +8,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "USUARIO")
 public class Usuario {
+	
 	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
@@ -139,5 +140,4 @@ public class Usuario {
 	public void setlUsuarioRol(List<UsuarioRol> lUsuarioRol) {
 		this.lUsuarioRol = lUsuarioRol;
 	}
-
 }

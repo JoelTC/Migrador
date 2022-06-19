@@ -74,5 +74,4 @@ public class DocEmpresa {
 	public void setlUsuario(List<Usuario> lUsuario) {
 		this.lUsuario = lUsuario;
 	}
-
 }

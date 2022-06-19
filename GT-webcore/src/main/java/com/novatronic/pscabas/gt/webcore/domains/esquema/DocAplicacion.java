@@ -5,6 +5,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "APLICACION")
 public class DocAplicacion {
+	
 	@Element(name = "APLICACION", required = false)
 	private Aplicacion aplicacion;
 
@@ -15,5 +16,4 @@ public class DocAplicacion {
 	public void setAplicacion(Aplicacion aplicacion) {
 		this.aplicacion = aplicacion;
 	}
-
 }

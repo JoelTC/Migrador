@@ -32,5 +32,4 @@ public class RolPermiso {
 	public String toString() {
 		return nombre + " - " + mnemonico;
 	}
-
 }

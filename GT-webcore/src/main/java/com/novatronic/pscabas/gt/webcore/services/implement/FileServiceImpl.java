@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.FileService;
+import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -25,38 +26,38 @@ public class FileServiceImpl implements FileService {
 	public static Path rutaFolder; // Variable estatica para la ruta en donde se alojara el archivo
 	public static File archivo; // Variable que contendra al documento xml
 
-	private String manejoNombre(String file, int i) {
+	private String manejoNombre(String pFile, int i) {
 		// Se renombra el archivo con la fecha de carga
-		String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yy"));
+		String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constantes.DATE_FORMAT));
 
 		if (i == 0) {
-			nombreArchivo = file.substring(0, file.length() - 4) + "-copia-" + fecha + ".xml";
+			nombreArchivo = pFile.substring(0, pFile.length() - 4) + "-copia-" + fecha + ".xml";
 			return nombreArchivo;
 		} else {
-			nombreArchivo = file.substring(0, file.length() - 4) + "-copia-" + fecha + " (" + i + ").xml";
+			nombreArchivo = pFile.substring(0, pFile.length() - 4) + "-copia-" + fecha + " (" + i + ").xml";
 			return nombreArchivo;
 		}
 	}
 
 	@Override
-	public String save(MultipartFile file, String path) throws MigradorException {
+	public String save(MultipartFile pFile, String pPath) throws MigradorException {
 		try {
-			rutaFolder = Paths.get(path);
-			nombreArchivo = manejoNombre(file.getOriginalFilename(), 0);
+			rutaFolder = Paths.get(pPath);
+			nombreArchivo = manejoNombre(pFile.getOriginalFilename(), 0);
 			archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 
 			if (!archivo.exists()) {
-				Files.copy(file.getInputStream(), rutaFolder.resolve(nombreArchivo));
+				Files.copy(pFile.getInputStream(), rutaFolder.resolve(nombreArchivo));
 				return "Los archivos fueron cargados correctamente al servidor";
 			} else {
 				boolean f = true;
 				int i = 1;
 				while (f) {
-					nombreArchivo = manejoNombre(file.getOriginalFilename(), i);
+					nombreArchivo = manejoNombre(pFile.getOriginalFilename(), i);
 					archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 
 					if (!archivo.exists()) {
-						Files.copy(file.getInputStream(), rutaFolder.resolve(nombreArchivo));
+						Files.copy(pFile.getInputStream(), rutaFolder.resolve(nombreArchivo));
 						f = false;
 						return "Los archivos fueron cargados correctamente al servidor";
 					}
@@ -73,11 +74,11 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public Resource load(String name) throws MigradorException {
+	public Resource load(String pFilename) throws MigradorException {
 		try {
-			archivo = new File(rutaFolder + "\\" + name);
+			archivo = new File(rutaFolder + "\\" + pFilename);
 			if (archivo.exists()) {
-				Path file = rutaFolder.resolve(name);
+				Path file = rutaFolder.resolve(pFilename);
 				Resource resource = new UrlResource(file.toUri());
 				return resource;
 			} else {

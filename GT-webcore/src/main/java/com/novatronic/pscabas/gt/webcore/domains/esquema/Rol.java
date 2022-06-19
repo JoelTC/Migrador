@@ -8,6 +8,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "ROL")
 public class Rol {
+	
 	@Attribute(name = "nombre", required = false)
 	private String nombre;
 

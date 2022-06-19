@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.1\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": null\r\n}",
+							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,6 +89,35 @@
 								"v1",
 								"empresa",
 								"listarAplicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCifradoApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarCifrado",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"listarCifrado"
 							]
 						}
 					},
@@ -197,7 +226,7 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.1.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.3.xml"
 						},
 						{
 							"key": "path",
