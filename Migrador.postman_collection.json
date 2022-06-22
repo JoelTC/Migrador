@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": null\r\n}",
+							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\",\r\n    \"cifradoOrigen\": \"1\",\r\n    \"cifradoDestino\": null,\r\n    \"lRolPadre\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,29 +44,7 @@
 					"response": []
 				},
 				{
-					"name": "EmpresaMigrarAPIServer",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"gt-webcore",
-								"v1",
-								"empresa",
-								"migrar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListarAplicacionApi",
+					"name": "02 - ListarAplicacionApi",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -95,7 +73,41 @@
 					"response": []
 				},
 				{
-					"name": "ListarCifradoApi",
+					"name": "02.1 - FiltrarAplicacionApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"nombre\": \"Sistema de Control de Accesos\",\r\n        \"mnemonico\": \"seguridad\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/filtrarAplicacion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"filtrarAplicacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - ListarCifradoApi",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -118,6 +130,103 @@
 								"v1",
 								"empresa",
 								"listarCifrado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03.1 - MigrarCifradoApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cifradoOrigen\": \"0\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrarCifrado",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"migrarCifrado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - ListarRolPadreApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarRolPadre",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"listarRolPadre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04.1 - RenombrarRolPadreApi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_OPERADOR\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_OPERADOR\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_ADM\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_ADM\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"ROL_ADM\",\r\n        \"mnemonicoDestino\": \"ROL_ADM\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"administradorPadre\",\r\n        \"mnemonicoDestino\": \"Adminzore\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"rolagrupadorconsultor\",\r\n        \"mnemonicoDestino\": \"Rolagrupadorconsultor\"\r\n        },\r\n    {\r\n        \"mnemonicoOrigen\": \"sixbioweb_ver\",\r\n        \"mnemonicoDestino\": \"sixbioweb_ver\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"sixbioweb_adm\",\r\n        \"mnemonicoDestino\": \"sixbioweb_adm\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"new2RolAgrupMibanco\",\r\n        \"mnemonicoDestino\": \"new2RolAgrupMibanco\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_adminMWSER\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_adminMWSER\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/gt-webcore/v1/empresa/renombrarRolPadre",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gt-webcore",
+								"v1",
+								"empresa",
+								"renombrarRolPadre"
 							]
 						}
 					},
@@ -216,7 +325,7 @@
 			]
 		},
 		{
-			"name": "FileApiLocal",
+			"name": "01 - FileApiLocal",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -226,12 +335,18 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.3.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/templateEMPRESA 3.0.xml"
 						},
 						{
 							"key": "path",
 							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
 							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},

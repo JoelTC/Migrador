@@ -2,19 +2,17 @@ package com.novatronic.pscabas.gt.webcore.domains.request;
 
 import java.util.List;
 
-import com.novatronic.pscabas.gt.webcore.domains.esquema.Aplicacion;
-import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
-
-public class MigradorEmpresa {
+public class MigradorEmpresaRequest {
 
 	private String version;
 	private String rolPadre;
 	private String tipo;
-	private List<Aplicacion> lAplicacion;
+	private List<AplicacionRequest> lAplicacion;
 	private String fechaNacimiento;
-	private String cifrado;
+	private String cifradoOrigen;
+	private String cifradoDestino;
 	private String contrasena;
-	private List<RolPadre> lRolPadre;
+	private List<RolPadreRequest> lRolPadre;
 
 	public String getVersion() {
 		return version;
@@ -40,11 +38,11 @@ public class MigradorEmpresa {
 		this.tipo = tipo;
 	}
 
-	public List<Aplicacion> getlAplicacion() {
+	public List<AplicacionRequest> getlAplicacion() {
 		return lAplicacion;
 	}
 
-	public void setlAplicacion(List<Aplicacion> lAplicacion) {
+	public void setlAplicacion(List<AplicacionRequest> lAplicacion) {
 		this.lAplicacion = lAplicacion;
 	}
 
@@ -56,12 +54,20 @@ public class MigradorEmpresa {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getCifrado() {
-		return cifrado;
+	public String getCifradoOrigen() {
+		return cifradoOrigen;
 	}
 
-	public void setCifrado(String cifrado) {
-		this.cifrado = cifrado;
+	public void setCifradoOrigen(String cifradoOrigen) {
+		this.cifradoOrigen = cifradoOrigen;
+	}
+
+	public String getCifradoDestino() {
+		return cifradoDestino;
+	}
+
+	public void setCifradoDestino(String cifradoDestino) {
+		this.cifradoDestino = cifradoDestino;
 	}
 
 	public String getContrasena() {
@@ -72,11 +78,12 @@ public class MigradorEmpresa {
 		this.contrasena = contrasena;
 	}
 
-	public List<RolPadre> getlRolPadre() {
+	public List<RolPadreRequest> getlRolPadre() {
 		return lRolPadre;
 	}
 
-	public void setlRolPadre(List<RolPadre> lRolPadre) {
+	public void setlRolPadre(List<RolPadreRequest> lRolPadre) {
 		this.lRolPadre = lRolPadre;
 	}
+
 }

@@ -1,12 +1,19 @@
 package com.novatronic.pscabas.gt.webcore.services.implement;
 
+import java.util.List;
+
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.springframework.stereotype.Service;
 
 import com.novatronic.pscabas.gt.webcore.business.EmpresaBusiness;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
-import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresa;
+import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
+import com.novatronic.pscabas.gt.webcore.domains.request.AplicacionRequest;
+import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
+import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
+import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
+import com.novatronic.pscabas.gt.webcore.domains.responses.AplicacionResponse;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
@@ -17,7 +24,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	private EmpresaBusiness business = new EmpresaBusiness();
 
 	@Override
-	public DocEmpresa migrarEmpresa(MigradorEmpresa pMigradorEmpresa) throws MigradorException {
+	public DocEmpresa migrarEmpresa(MigradorEmpresaRequest pMigradorEmpresa) throws MigradorException {
 
 		try {
 			// Deserializa el archivo y lo conviete en el objeto empresa
@@ -31,12 +38,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 
 			case "2.3":
 				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa.getTipo(),
-						pMigradorEmpresa.getRolPadre());
+						pMigradorEmpresa.getFechaNacimiento(), pMigradorEmpresa.getRolPadre());
 				break;
 
 			default:
 				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa.getTipo(),
-						pMigradorEmpresa.getRolPadre());
+						pMigradorEmpresa.getFechaNacimiento(), pMigradorEmpresa.getRolPadre());
 			}
 
 			return oDocEmpresa;
@@ -49,16 +56,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public MigradorEmpresa listarAplicacion() throws MigradorException {
+	public List<AplicacionResponse> listarAplicacion() throws MigradorException {
 		try {
-			MigradorEmpresa oMigradorEmpresa = new MigradorEmpresa();
-
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
-			oMigradorEmpresa.setlAplicacion(business.listarAplicacion(oDocEmpresa));
-
-			return oMigradorEmpresa;
+			return business.listarAplicacion(oDocEmpresa);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,16 +71,75 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public MigradorEmpresa listarCifrado() throws MigradorException {
+	public DocEmpresa filtrarAplicacion(List<AplicacionRequest> pAplicacion) throws MigradorException {
 		try {
-			MigradorEmpresa oMigradorEmpresa = new MigradorEmpresa();
+			// Deserializa el archivo y lo conviete en el objeto aplicacion
+			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
+			return business.filtrarAplicacion(oDocEmpresa, pAplicacion);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			return null;
+		}
+	}
+
+	@Override
+	public String listarCifrado() throws MigradorException {
+		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
-			oMigradorEmpresa.setCifrado(oDocEmpresa.getCifrado());
+			return oDocEmpresa.getCifrado();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			return null;
+		}
+	}
 
-			return oMigradorEmpresa;
+	@Override
+	public String migrarCifrado(CifradoRequest pCifrado) throws MigradorException {
+		try {
+			// Deserializa el archivo y lo conviete en el objeto aplicacion
+			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
+
+			if (business.migrarCifrado(oDocEmpresa, pCifrado.getCifradoOrigen(), pCifrado.getCifradoDestino(),
+					pCifrado.getContrasena()) != null) {
+				return "Cambio de contraseña realizado";
+			} else {
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<RolPadre> listarRolPadre() throws MigradorException {
+		try {
+			// Deserializa el archivo y lo conviete en el objeto aplicacion
+			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
+
+			return oDocEmpresa.getlRolPadre();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			return null;
+		}
+	}
+
+	@Override
+	public DocEmpresa renombrarRolPadre(List<RolPadreRequest> pRolPadre) throws MigradorException {
+		try {
+			// Deserializa el archivo y lo conviete en el objeto aplicacion
+			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
+
+			return business.renombrarRolPadre(oDocEmpresa, pRolPadre);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);

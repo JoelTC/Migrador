@@ -8,5 +8,5 @@ public class Constantes {
     
     //FORMATOS
     public static final String DATE_FORMAT = "dd-MM-yy";
-    public static final String XML_FORMAT = "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>";
+    public static final String XML_FORMAT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 }
