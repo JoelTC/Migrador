@@ -12,7 +12,7 @@ public class MigradorEmpresaRequest {
 	private String cifradoOrigen;
 	private String cifradoDestino;
 	private String contrasena;
-	private List<RolPadreRequest> lRolPadre;
+	//private List<RolPadreRequest> lRolPadre;
 
 	public String getVersion() {
 		return version;
@@ -78,12 +78,12 @@ public class MigradorEmpresaRequest {
 		this.contrasena = contrasena;
 	}
 
-	public List<RolPadreRequest> getlRolPadre() {
+	/*public List<RolPadreRequest> getlRolPadre() {
 		return lRolPadre;
 	}
 
 	public void setlRolPadre(List<RolPadreRequest> lRolPadre) {
 		this.lRolPadre = lRolPadre;
-	}
+	}*/
 
 }
