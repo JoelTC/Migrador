@@ -32,20 +32,18 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 
 			switch (pMigradorEmpresa.getVersion()) {
 			case "2.1":
-				oDocEmpresa = business.convertirVersion21(oDocEmpresa, pMigradorEmpresa.getTipo(),
-						pMigradorEmpresa.getFechaNacimiento(), pMigradorEmpresa.getRolPadre());
+				oDocEmpresa = business.convertirVersion21(oDocEmpresa, pMigradorEmpresa);
 				break;
 
 			case "2.3":
-				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa.getTipo(),
-						pMigradorEmpresa.getFechaNacimiento(), pMigradorEmpresa.getRolPadre());
+				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa);
 				break;
 
 			default:
-				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa.getTipo(),
-						pMigradorEmpresa.getFechaNacimiento(), pMigradorEmpresa.getRolPadre());
+				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa);
 			}
 
+			business.gestionarArchivos(oDocEmpresa);
 			return oDocEmpresa;
 
 		} catch (Exception e) {
@@ -75,7 +73,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
-			return business.filtrarAplicacion(oDocEmpresa, pAplicacion);
+
+			oDocEmpresa = business.filtrarAplicacion(oDocEmpresa, pAplicacion);
+
+			business.gestionarArchivos(oDocEmpresa);
+
+			return oDocEmpresa;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,9 +107,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
-			if (business.migrarCifrado(oDocEmpresa, pCifrado.getCifradoOrigen(), pCifrado.getCifradoDestino(),
-					pCifrado.getContrasena()) != null) {
+			oDocEmpresa = business.migrarCifrado(oDocEmpresa, pCifrado.getCifradoOrigen(), pCifrado.getCifradoDestino(),
+					pCifrado.getContrasena());
+			if (oDocEmpresa != null) {
+				business.gestionarArchivos(oDocEmpresa);
 				return "Cambio de contraseña realizado";
+
 			} else {
 				return null;
 			}
@@ -138,8 +144,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
+			oDocEmpresa = business.renombrarRolPadre(oDocEmpresa, pRolPadre);
 
-			return business.renombrarRolPadre(oDocEmpresa, pRolPadre);
+			business.gestionarArchivos(oDocEmpresa);
+
+			return oDocEmpresa;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);

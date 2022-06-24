@@ -10,7 +10,7 @@
 			"name": "Empresa",
 			"item": [
 				{
-					"name": "EmpresaMigrarAPILocal",
+					"name": "01.1 - EmpresaMigrarAPILocal",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\",\r\n    \"cifradoOrigen\": \"1\",\r\n    \"cifradoDestino\": null,\r\n    \"lRolPadre\": null\r\n}",
+							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": null,\r\n    \"cifradoDestino\": null,\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\",\r\n    \"lRolPadre\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"nombre\": \"Sistema de Control de Accesos\",\r\n        \"mnemonico\": \"seguridad\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"nombre\": \"Sistema de Control de Accesos\",\r\n        \"mnemonico\": \"seguridad\"\r\n    },\r\n    {\r\n        \"nombre\": \"Sistema de Control de Accesos\",\r\n        \"mnemonico\": \"sca\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -276,51 +276,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "AplicacionMigrarAPIServer",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "tipo",
-									"value": "OPCION",
-									"type": "text"
-								},
-								{
-									"key": "version",
-									"value": "2.3",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://172.29.42.13:8080/GT-webcore-1.0.0/api/gt-webcore/v1/aplicacion/migrar",
-							"protocol": "http",
-							"host": [
-								"172",
-								"29",
-								"42",
-								"13"
-							],
-							"port": "8080",
-							"path": [
-								"GT-webcore-1.0.0",
-								"api",
-								"gt-webcore",
-								"v1",
-								"aplicacion",
-								"migrar"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -335,7 +290,7 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/templateEMPRESA 3.0.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.1.xml"
 						},
 						{
 							"key": "path",
@@ -357,48 +312,6 @@
 					],
 					"port": "8080",
 					"path": [
-						"api",
-						"gt-webcore",
-						"v1",
-						"file",
-						"upload"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "FileApiServer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "files",
-							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-aplicacion 2.1.xml"
-						},
-						{
-							"key": "path",
-							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://172.29.42.13:8080/GT-webcore/api/gt-webcore/v1/file/upload",
-					"protocol": "http",
-					"host": [
-						"172",
-						"29",
-						"42",
-						"13"
-					],
-					"port": "8080",
-					"path": [
-						"GT-webcore",
 						"api",
 						"gt-webcore",
 						"v1",
