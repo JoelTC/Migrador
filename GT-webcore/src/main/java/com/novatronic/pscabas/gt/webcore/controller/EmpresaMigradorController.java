@@ -5,25 +5,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
-import com.novatronic.pscabas.gt.webcore.domains.request.AplicacionRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.domains.responses.AplicacionResponse;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
 @RestController
-@RequestMapping("api/gt-webcore/v1/empresa")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
+@RequestMapping("gt-webcore/api/v1/empresa")
 public class EmpresaMigradorController {
 
 	@Autowired
@@ -39,14 +40,14 @@ public class EmpresaMigradorController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "listarAplicacion", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Response<List<AplicacionResponse>> listarAplicacion() throws MigradorException {
+	public Response<List<AplicacionDTO>> listarAplicacion() throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
 				empresaMigradorService.listarAplicacion());
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "filtrarAplicacion", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Response<DocEmpresa> filtrarAplicacion(@RequestBody List<AplicacionRequest> pAplicacion)
+	public Response<DocEmpresa> filtrarAplicacion(@RequestBody List<AplicacionDTO> pAplicacion)
 			throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
 				empresaMigradorService.filtrarAplicacion(pAplicacion));

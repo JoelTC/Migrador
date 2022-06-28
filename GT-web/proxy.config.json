@@ -1,0 +1,12 @@
+{
+    "/template/*": {
+        "target": "http://localhost:8080/gt-webcore/",
+        "secure": true,
+        "logLevel": "debug",
+        "changeOrigin": true,
+      "pathRewrite": {
+        "^/template": ""
+      }
+      
+    }
+}

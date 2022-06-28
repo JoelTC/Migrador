@@ -3,6 +3,7 @@ package com.novatronic.pscabas.gt.webcore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,8 @@ import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.AplicacionMigradorService;
 
 @RestController
-@RequestMapping("api/gt-webcore/v1/aplicacion")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
+@RequestMapping("gt-webcore/api/v1/aplicacion")
 public class AplicacionMigradorController {
 
 	@Autowired

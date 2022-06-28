@@ -2,12 +2,14 @@ package com.novatronic.pscabas.gt.webcore.domains.request;
 
 import java.util.List;
 
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
+
 public class MigradorEmpresaRequest {
 
 	private String version;
 	private String rolPadre;
 	private String tipo;
-	private List<AplicacionRequest> lAplicacion;
+	private List<AplicacionDTO> lAplicacion;
 	private String fechaNacimiento;
 	private String cifradoOrigen;
 	private String cifradoDestino;
@@ -38,11 +40,11 @@ public class MigradorEmpresaRequest {
 		this.tipo = tipo;
 	}
 
-	public List<AplicacionRequest> getlAplicacion() {
+	public List<AplicacionDTO> getlAplicacion() {
 		return lAplicacion;
 	}
 
-	public void setlAplicacion(List<AplicacionRequest> lAplicacion) {
+	public void setlAplicacion(List<AplicacionDTO> lAplicacion) {
 		this.lAplicacion = lAplicacion;
 	}
 

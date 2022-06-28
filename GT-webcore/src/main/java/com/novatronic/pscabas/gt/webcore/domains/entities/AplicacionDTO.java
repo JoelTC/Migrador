@@ -1,6 +1,6 @@
-package com.novatronic.pscabas.gt.webcore.domains.responses;
+package com.novatronic.pscabas.gt.webcore.domains.entities;
 
-public class AplicacionResponse {
+public class AplicacionDTO {
 	private String nombre;
 	private String mnemonico;
 

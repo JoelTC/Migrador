@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,8 @@ import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.FileService;
 
 @RestController
-@RequestMapping("api/gt-webcore/v1/file")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
+@RequestMapping("gt-webcore/api/v1/file")
 public class FileController {
 
 	@Autowired

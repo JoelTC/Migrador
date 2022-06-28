@@ -7,13 +7,12 @@ import org.simpleframework.xml.core.Persister;
 import org.springframework.stereotype.Service;
 
 import com.novatronic.pscabas.gt.webcore.business.EmpresaBusiness;
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
-import com.novatronic.pscabas.gt.webcore.domains.request.AplicacionRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.domains.responses.AplicacionResponse;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
@@ -54,7 +53,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public List<AplicacionResponse> listarAplicacion() throws MigradorException {
+	public List<AplicacionDTO> listarAplicacion() throws MigradorException {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
@@ -69,7 +68,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public DocEmpresa filtrarAplicacion(List<AplicacionRequest> pAplicacion) throws MigradorException {
+	public DocEmpresa filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);

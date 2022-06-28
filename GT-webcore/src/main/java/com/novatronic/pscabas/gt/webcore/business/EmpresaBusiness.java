@@ -9,6 +9,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.stream.Format;
 
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Aplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Permiso;
@@ -17,10 +18,8 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPorRol;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Usuario;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.UsuarioRol;
-import com.novatronic.pscabas.gt.webcore.domains.request.AplicacionRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.domains.responses.AplicacionResponse;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.implement.FileServiceImpl;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
@@ -91,12 +90,12 @@ public class EmpresaBusiness {
 		}
 	}
 
-	public List<AplicacionResponse> listarAplicacion(DocEmpresa pDocEmpresa) throws MigradorException {
+	public List<AplicacionDTO> listarAplicacion(DocEmpresa pDocEmpresa) throws MigradorException {
 		try {
-			List<AplicacionResponse> lAplicacion = new ArrayList<AplicacionResponse>();
+			List<AplicacionDTO> lAplicacion = new ArrayList<AplicacionDTO>();
 
 			for (Aplicacion iAplicacion : pDocEmpresa.getlAplicacion()) {
-				AplicacionResponse oAplicacion = new AplicacionResponse();
+				AplicacionDTO oAplicacion = new AplicacionDTO();
 				oAplicacion.setNombre(iAplicacion.getNombre());
 				oAplicacion.setMnemonico(iAplicacion.getMnemonico());
 				lAplicacion.add(oAplicacion);
@@ -111,7 +110,7 @@ public class EmpresaBusiness {
 		}
 	}
 
-	public DocEmpresa filtrarAplicacion(DocEmpresa pDocEmpresa, List<AplicacionRequest> pAplicacion)
+	public DocEmpresa filtrarAplicacion(DocEmpresa pDocEmpresa, List<AplicacionDTO> pAplicacion)
 			throws MigradorException {
 		try {
 			if (pAplicacion != null && pAplicacion.size() > 0) {
@@ -119,7 +118,7 @@ public class EmpresaBusiness {
 				List<RolPadre> lRolPadre = new ArrayList<RolPadre>();
 
 				for (Aplicacion iAplicacion : pDocEmpresa.getlAplicacion()) {
-					for (AplicacionRequest iAplicacionR : pAplicacion) {
+					for (AplicacionDTO iAplicacionR : pAplicacion) {
 						if (iAplicacion.getMnemonico().equals(iAplicacionR.getMnemonico())) {
 							lAplicacion.add(iAplicacion);
 							break;
@@ -212,7 +211,8 @@ public class EmpresaBusiness {
 					pDocEmpresa.getlRolPadre().get(i).setMnemonico(pRolPadre.get(i).getMnemonicoDestino());
 
 					for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
-						if (iUsuario.getRolMnemonico().equals(pRolPadre.get(i).getMnemonicoOrigen())) {
+						if (iUsuario.getRolMnemonico() != null
+								&& iUsuario.getRolMnemonico().equals(pRolPadre.get(i).getMnemonicoOrigen())) {
 							iUsuario.setRolMnemonico(pRolPadre.get(i).getMnemonicoDestino());
 						}
 					}
