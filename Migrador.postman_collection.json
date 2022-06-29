@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": null,\r\n    \"cifradoDestino\": null,\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\",\r\n    \"lRolPadre\": null\r\n}",
+							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": \"1\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,14 +27,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrar",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/migrar",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"migrar"
@@ -56,14 +56,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarAplicacion",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/listarAplicacion",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"listarAplicacion"
@@ -90,14 +90,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/filtrarAplicacion",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/filtrarAplicacion",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"filtrarAplicacion"
@@ -119,14 +119,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarCifrado",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/listarCifrado",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"listarCifrado"
@@ -153,14 +153,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/migrarCifrado",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/migrarCifrado",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"migrarCifrado"
@@ -182,14 +182,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/listarRolPadre",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/listarRolPadre",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"listarRolPadre"
@@ -208,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_OPERADOR\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_OPERADOR\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_ADM\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_ADM\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"ROL_ADM\",\r\n        \"mnemonicoDestino\": \"ROL_ADM\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"administradorPadre\",\r\n        \"mnemonicoDestino\": \"Adminzore\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"rolagrupadorconsultor\",\r\n        \"mnemonicoDestino\": \"Rolagrupadorconsultor\"\r\n        },\r\n    {\r\n        \"mnemonicoOrigen\": \"sixbioweb_ver\",\r\n        \"mnemonicoDestino\": \"sixbioweb_ver\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"sixbioweb_adm\",\r\n        \"mnemonicoDestino\": \"sixbioweb_adm\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"new2RolAgrupMibanco\",\r\n        \"mnemonicoDestino\": \"new2RolAgrupMibanco\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"AGRUPADOR_adminMWSER\",\r\n        \"mnemonicoDestino\": \"AGRUPADOR_adminMWSER\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"mnemonicoOrigen\": \"RolAgrupador_1\",\r\n        \"mnemonicoDestino\": \"Administrador\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"RolAgrupador_8\",\r\n        \"mnemonicoDestino\": \"Operador\"\r\n    },\r\n    {\r\n        \"mnemonicoOrigen\": \"RolAgrupador_9\",\r\n        \"mnemonicoDestino\": \"Visitante\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -216,14 +216,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/empresa/renombrarRolPadre",
+							"raw": "localhost:8080/gt-webcore/api/v1/empresa/renombrarRolPadre",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"empresa",
 								"renombrarRolPadre"
@@ -249,26 +249,26 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "tipo",
-									"value": "OPCION",
+									"key": "version",
+									"value": "2.1",
 									"type": "text"
 								},
 								{
-									"key": "version",
-									"value": "2.1",
+									"key": "tipo",
+									"value": "OPCION",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:8080/api/gt-webcore/v1/aplicacion/migrar",
+							"raw": "localhost:8080/gt-webcore/api/v1/aplicacion/migrar",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
 								"gt-webcore",
+								"api",
 								"v1",
 								"aplicacion",
 								"migrar"
@@ -290,7 +290,7 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.1.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.3.xml"
 						},
 						{
 							"key": "path",
@@ -306,14 +306,14 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:8080/api/gt-webcore/v1/file/upload",
+					"raw": "localhost:8080/gt-webcore/api/v1/file/upload",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"api",
 						"gt-webcore",
+						"api",
 						"v1",
 						"file",
 						"upload"
