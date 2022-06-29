@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DocAplicacion } from './models/esquema/DocAplicacion';
 import { AplicacionService } from './services/aplicacion/aplicacion.service';
-import { FileService } from './services/file.service';
 
 @Component({
   selector: 'app-root',
@@ -13,31 +12,11 @@ export class AppComponent {
   public docAplacion: DocAplicacion[];
   fileToUpload: File;
 
-  constructor(private serviceAplicacion: AplicacionService, private serviceFile: FileService) {
+  constructor(private serviceAplicacion: AplicacionService) {
   }
 
   ngOnInit() {
     //this.migrarAplicacion();
-  }
-
-  handleFileInput(event: Event) {
-    const element = event.currentTarget as HTMLInputElement;
-    let fileList: FileList | null = element.files;
-    if (fileList) {
-      console.log("FileUpload -> files", fileList);
-      console.log("FileUpload -> files", fileList[0]);
-
-      this.serviceFile.uploadFile(fileList[0], 'C:\\Users\\jtrujillo\\Desktop\\templates\\templates').subscribe({
-        next: (result: any) => {
-          console.log("Mensaje: ", result);
-        },
-        error: (error) => { "Error: " + console.log(error) }
-      })
-    }
-  }
-
-  abrirReplica(){
-    
   }
 
   public migrarAplicacion() {

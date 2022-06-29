@@ -16,18 +16,22 @@ import { InicioModule } from './modules/inicio/inicio.module';
 import { EmpresaModule } from './modules/empresa/empresa.module';
 import { AplicacionModule } from './modules/aplicacion/aplicacion.module';
 
+//Componentes de la aplicacion
+import { ContainerComponent } from './components/container/container.component';
+import { MenuComponent } from './components/container/menu/menu.component';
+import { FileComponent } from './components/file/file.component';
+
 //Manejo de hora en español
 import { registerLocaleData } from '@angular/common';
 import localePe from '@angular/common/locales/es-PE';
-import { ContainerComponent } from './components/container/container.component';
-import { MenuComponent } from './components/container/menu/menu.component';
 registerLocaleData(localePe, 'es');
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
-    MenuComponent
+    MenuComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,
