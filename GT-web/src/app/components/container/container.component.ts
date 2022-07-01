@@ -18,17 +18,11 @@ export class ContainerComponent implements OnInit {
 
   constructor(changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private router: Router,) 
-    { this.date = Date.now();
-      this.mobile = media.matchMedia('(max-width: 500px)');
-      this.mobileListener = () => changeDetectorRef.detectChanges();
-      this.mobile.addListener(this.mobileListener);}
-
-  ngOnInit(): void {
+    private router: Router,) {
+      this.date = Date.now();
   }
 
-  ngOnDestroy(): void {
-    this.mobile.removeListener(this.mobileListener);
+  ngOnInit(): void {
   }
 
   public logout(snav: any) {
@@ -39,4 +33,5 @@ export class ContainerComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login']);
   }
+
 }

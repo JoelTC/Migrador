@@ -2,8 +2,6 @@ import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-
 //Enrutador
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -17,9 +15,9 @@ import { EmpresaModule } from './modules/empresa/empresa.module';
 import { AplicacionModule } from './modules/aplicacion/aplicacion.module';
 
 //Componentes de la aplicacion
+import { AppComponent } from './app.component';
 import { ContainerComponent } from './components/container/container.component';
 import { MenuComponent } from './components/container/menu/menu.component';
-import { FileComponent } from './components/file/file.component';
 
 //Manejo de hora en español
 import { registerLocaleData } from '@angular/common';
@@ -31,7 +29,6 @@ registerLocaleData(localePe, 'es');
     AppComponent,
     ContainerComponent,
     MenuComponent,
-    FileComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +38,9 @@ registerLocaleData(localePe, 'es');
     HttpClientModule,
     LoginModule,
     InicioModule,
-    EmpresaModule,
     AplicacionModule,
-    SharedModule
+    SharedModule,
+    EmpresaModule
   ],
   providers:[
     { provide: LOCALE_ID, useValue: 'es-PE' },

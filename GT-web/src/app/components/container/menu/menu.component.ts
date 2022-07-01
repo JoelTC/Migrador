@@ -8,11 +8,13 @@ import { MenuItem } from 'src/app/models/entities/Menu';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
+  public success: boolean;
   public items: MenuItem[];
   public modules: any[];
+  public tipo: number;
 
   constructor(private router: Router) {
+    this.success = true;
     this.initAccesoSistema(false);
   }
 
@@ -40,14 +42,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  public home() {
-    this.router.navigate(['home']).then();
-  }
-
-  public logout() {
-    /* sessionStorage.clear();
-    localStorage.clear();
-    this.serviceData.authenticated = false;
-    this.router.navigate(['login']); */
+  public migrarEmpresa() {
+    this.router.navigate(['migrarEmpresa']).then();
   }
 }

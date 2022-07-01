@@ -1,63 +1,29 @@
 <div style="overflow-y: auto; overflow-x: hidden;">
-    <button (click)="home()" class="btn-item btn">
-        <i class="mdi mdi-home f-15"></i> <span class="font-weight-light">Inicio</span>
+
+    <button (click)="show(1)" class="btn-item btn">
+        <span class="font-weight-light">EMPRESA </span>
         <span style="float:right">
-            <i class="mdi mdi-checkbox-multiple-blank-circle f-11"></i></span>
-    </button>
-    <button (click)="show(1)" class="list-group-item btn-item btn">
-        <i class="mdi mdi-account-multiple f-15 "></i> <span class="font-weight-light">Mi Perfil</span>
-        <span style="float:right">
-            <i class="mdi mdi-checkbox-multiple-blank-circle-outline f-11"></i></span>
+            <i class="mdi mdi-plus f-11"></i></span>
     </button>
 
     <div *ngIf="modules[0].state" class="ele">
-        <button class="btn simi-btn-light btn-block" [routerLink]="['profile/informacionAcademica']">
-        <i class="mdi mdi-book-information-variant f-15"></i> Información Académica
+        <button class="btn-menu btn" [routerLink]="['migrarEmpresa']">
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Migrar template
         </button>
-        <button class="btn simi-btn-light btn-block" [routerLink]="['profile/historialAcademico']">
-        <i class="mdi mdi-school f-15"></i> Historial Académico
+        <button class="btn-menu btn" [routerLink]="['configuracionInicial/conTipVal']">
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Filtrar empresa
         </button>
-        <!-- <button class="btn simi-btn-light btn-block" [routerLink]="['profile/cuentaUsuario']">
-        <i class="mdi mdi-account f-15"></i> Cuenta de usuario
-        </button> -->
+        <button class="btn-menu btn" [routerLink]="['configuracionInicial/configFiltros']">
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Cifrado
+        </button>
+        <button class="btn-menu btn" [routerLink]="['configuracionInicial/configFiltros']">
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Rol agrupado
+        </button>
     </div>
 
-    <button (click)="show(2)" class="list-group-item btn-item btn">
-        <i class="mdi mdi-school-outline f-15"></i> <span class="font-weight-light">Centro de Idiomas</span>
+    <button class="btn-item btn" [routerLink]="['migrarEmpresa']">
+        <span class="font-weight-light">APLICACION </span>
         <span style="float:right">
-            <i class="mdi mdi-checkbox-multiple-blank-circle-outline f-11"></i></span></button>
-    <div *ngIf="modules[1].state" class="ele">
-        <button class="btn simi-btn-light btn-block" [routerLink]="['centro-idiomas/conceptoPago']">
-        <i class="mdi mdi-credit-card-outline f-15"></i> Conceptos de pago</button>
-        <button class="btn simi-btn-light btn-block" [routerLink]="['centro-idiomas/docentes']">
-        <i class="mdi mdi-teach f-15"></i> Docentes</button>
-        <button class="btn simi-btn-light btn-block" [routerLink]="['centro-idiomas/planEstudio']">
-        <i class="mdi mdi-tablet-dashboard f-15"></i> Plan de Estudios</button>
-        <!-- <button class="btn simi-btn-light btn-block" [routerLink]="['mesas/list']">
-        <i class="mdi mdi-view-dashboard f-15"></i> Dashboard Online</button> -->
-    </div>
-    <button (click)="show(3)" class="list-group-item btn-item btn">
-        <i class="mdi mdi-calendar-multiple f-15"></i> <span class="font-weight-light">Periodo Académico</span>
-        <span style="float:right">
-            <i class="mdi mdi-checkbox-multiple-blank-circle-outline f-11"></i></span></button>
-    <div *ngIf="modules[2].state" class="ele">
-        <button class="btn simi-btn-light btn-block" [routerLink]="['periodo-academico/matriculaOnline']">
-        <i class="mdi mdi-book-variant-multiple f-15"></i> Matrícula Online</button>
-        <!-- <button class="btn simi-btn-light btn-block" [routerLink]="['clientes/tipos']">
-        <i class="mdi mdi-book-open-variant f-15"></i> Ciclo Académico</button> -->
-        <button class="btn simi-btn-light btn-block" [routerLink]="['periodo-academico/programacionCurso']">
-        <i class="mdi mdi-progress-clock f-15"></i> Programación de cursos</button>
-    </div>
-    <button (click)="show(4)" class="list-group-item btn-item btn">
-        <i class="mdi mdi-file f-15"></i> <span class="font-weight-light">Mis Reportes</span>
-        <span style="float:right">
-            <i class="mdi mdi-checkbox-multiple-blank-circle-outline f-11"></i></span></button>
-    <div *ngIf="modules[3].state" class="ele">
-        <button class="btn simi-btn-light btn-block" [routerLink]="['reportes/reporteMatricula']">
-        <i class="mdi mdi-clipboard-file f-15"></i> Reporte de matrícula</button>
-        <button class="btn simi-btn-light btn-block" [routerLink]="['reportes/reporteEvaluaciones']">
-        <i class="mdi mdi-file-multiple f-15"></i> Mis Cursos</button>
-        <button class="btn simi-btn-light btn-block" [routerLink]="['reportes/reportePagos']">
-        <i class="mdi mdi-file-chart f-15"></i> Mis Vouchers</button>
-    </div>
+            <i class="mdi mdi-plus f-11"></i></span>
+    </button>
 </div>

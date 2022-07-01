@@ -1,48 +1,48 @@
 <div class="main-container">
     <mat-sidenav-container class="sidenav-container">
-        <mat-sidenav #snav [mode]="mobile.matches ? 'over' : 'side'" [fixedInViewport]="mobile.matches"
-            class="sidenav-content">
-            <div class="text-center font-weight-light" style="background-color: #fafafa; color: black;">
-                <br />
-                <br />
-                <h2 class="example-app-name">
-                    <img src="favicon.ico" style="width: 40px; margin-right: 12px;" />
-                    <span>Fraccionamiento</span>
+        <mat-sidenav class="sidenav" #snav [opened]="true" [mode]="'side'">
+            <div class="text-center font-weight-light">
+                <h2 class="app-title">
+                    <img src="favicon.ico" style="width: 70px; margin-right: 12px;" />
+                    <span>Templates</span>
                 </h2>
-                <br />
-                <br />
             </div>
 
-            <mat-nav-list style="padding-top: 0px !important;">
+            <mat-nav-list>
                 <app-menu></app-menu>
-                <!--<button class="btn grt-btn-primary btn-block" style="text-align: left;">
-                    <i class="mdi mdi-location-exit f-15"></i> <span class="font-weight-light">
-                        Cerrar Sesión</span>
-                    <span style="float:right">
-                        <i class="mdi mdi-checkbox-multiple-blank-circle f-11"></i></span>
-                </button>-->
             </mat-nav-list>
 
-            <div class="text-center mt-4">
-                <span style="font-size: 12px;">GRT - Fraccionamiento</span> <br />
+            <div class="app-info">
+                <span style="font-size: 12px;">GT - Migración</span> <br />
                 <span style="font-size: 13.5px;">{{date | date:'fullDate':'pe'}}</span> <br />
-                <span style="font-size: 13px;"><b>version 1.0</b></span>
+                <span style="font-size: 13px;"><b>versión 1.0</b></span>
             </div>
         </mat-sidenav>
 
-        <mat-sidenav-content style="background-color: #ededee;">
-            <div class="header-login" style="position: absolute; z-index: 100; width: 100%;">
-                <button (click)="snav.toggle()" class="btn-sidenav btn grt-btn-primary"
+        <mat-sidenav-content class="sidenav-content">
+            <div class="header">
+                <!--<button (click)="snav.toggle()" class="btn-sidenav btn gt-btn-primary"
                     style="float:left; font-size: 18px !important;">
-                    <i class="ml-2 mr-2 mdi mdi-menu white"></i>
-                </button>
-                <button class="btn grt-btn-primary btn-block" style="float: right; height: 100%; text-align: left;"
-                    (click)="logout(snav)">
-                    <i class="mdi mdi-location-exit f-15"></i> <span class="font-weight-light">
-                        Cerrar Sesión</span>
-                </button>
+                    <i class="ml-2 mr-2 mdi mdi-men white"></i>
+                </button>-->
+                <label mat-stroked-button class="tooltip-button" style="font-size: 12.5px"
+                    style="float: right; height: 100%; text-align: left; margin-right: 20px;">
+
+                    <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary"
+                        style=" background-color: #0078c1;margin-left:10px">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                </label>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>exit_to_app</mat-icon>Cerrar sesión
+                    </button>
+                </mat-menu>
             </div>
-            <router-outlet></router-outlet>
+            <div style="padding: 10px;">
+                <router-outlet></router-outlet>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

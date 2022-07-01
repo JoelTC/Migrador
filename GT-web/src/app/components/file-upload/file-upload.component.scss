@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 60px auto 0 auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+#template {
+    display: none;
+
+}
+
+.gt-btn-file {
+    display: block;
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    background-color: #398a80;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-align: center;
+    align-items: center;
+}
+
+.gt-btn-file:hover{
+    transition: all .4s;
+    background-color: #396480;
+}

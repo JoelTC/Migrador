@@ -9,17 +9,17 @@ import { AplicacionService } from './services/aplicacion/aplicacion.service';
 })
 export class AppComponent {
   title = 'GT-web';
-  public docAplacion: DocAplicacion[];
-  fileToUpload: File;
+ /* public docAplacion: DocAplicacion[];
+  fileToUpload: File;*/
 
-  constructor(private serviceAplicacion: AplicacionService) {
+  constructor(/*private serviceAplicacion: AplicacionService*/) {
   }
 
   ngOnInit() {
     //this.migrarAplicacion();
   }
 
-  public migrarAplicacion() {
+  /*public migrarAplicacion() {
     this.serviceAplicacion.migrarAplicacion("MENU", "2.3").subscribe({
       next: (result: any) => {
         console.log('Doc: ', result);
@@ -27,5 +27,5 @@ export class AppComponent {
       },
       error: (error) => { "Error: " + console.log(error) }
     })
-  }
+  }*/
 }

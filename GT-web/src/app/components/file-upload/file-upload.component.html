@@ -1,0 +1,33 @@
+<div class="container">
+    <form>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4">
+                <input class="form-control" type="file" id="template" name="template" accept=".xml, .XML"
+                    (change)="cargarArchivo($event)" />
+                <input class="form-label" type="button" value="Seleccionar template" class="gt-btn-file"
+                    onclick="document.getElementById('template').click()" />
+            </div>
+        </div>
+
+
+        <div class="form-group row" style="margin-top: 40px">
+            <div class="row justify-content-md-center">
+                <div class="col-md-2">
+                    <label class="col-sm-12 col-form-label text-sm-left" style="font-size: 18px; text-align: left;">
+                        Ruta destino</label>
+                </div>
+
+                <div class="col-md-10">
+                    <input type="text" placeholder="Ingrese la ruta destino" class="col form-control"
+                        style="font-size: 18px; padding-left: 2px;" [(ngModel)]="txtPath" name="path" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 40px">
+            <div class="row justify-content-md-center">
+                <input class="form-label" type="button" value="Iniciar" class="gt-btn-file" (click)="iniciar()" />
+            </div>
+        </div>
+    </form>
+</div>
