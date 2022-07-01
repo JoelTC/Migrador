@@ -7,10 +7,17 @@ import { FileService } from 'src/app/services/file.service';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
-  txtPath: string = '';
   file: FileList | null = null;
 
-  constructor(private serviceFile: FileService) { }
+  //Variables auxiliares para controlar los eventos
+  public file_xml: string;
+  public load: boolean;
+  public nombre_file: string;
+
+  constructor(private serviceFile: FileService) {
+    this.file_xml = 'assets/recursos/file-xml.png';
+    this.load = false;
+  }
 
   ngOnInit(): void {
   }
@@ -18,12 +25,14 @@ export class FileUploadComponent implements OnInit {
   cargarArchivo(event: Event) {
     const element = event.currentTarget as HTMLInputElement;
     this.file = element.files;
+    if (this.file) {
+      this.nombre_file = this.file![0].name;
+      this.load = true;
+    }
   }
 
   iniciar() {
-    console.log("txt: ", this.txtPath);
-    console.log("File: ", this.file![0]);
-    this.serviceFile.uploadFile(this.file![0], this.txtPath).subscribe({
+    this.serviceFile.uploadFile(this.file![0]).subscribe({
       next: (result: any) => {
         console.log("Mensaje: ", result);
       },

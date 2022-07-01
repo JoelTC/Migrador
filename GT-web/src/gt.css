@@ -1,323 +1,357 @@
 /* GTStyles*/
 
 .gt-background-primary {
-    background-color: #096ac6;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-  }
-  
-  .gt-background-white {
-    height: 65%;
-    background-color: white;
-    width: 25%;
-    border-radius: 8px;
-  }
-  
-  .gt-card {
+  background-color: #096ac6;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.gt-background-white {
+  height: 65%;
+  background-color: white;
+  width: 25%;
+  border-radius: 8px;
+}
+
+.gt-card {
+  background-color: #ffffff;
+  color: black;
+  font-size: 14px;
+  margin: 15px;
+  padding: 30px;
+}
+
+.gt-primary {
+  color: #096ac6;
+}
+
+.gt-rose {
+  color: #e53935;
+}
+
+.gt-green {
+  color: #69c608;
+}
+
+.gt-bg-gray-circle {
+  background-color: #ebebeb;
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+}
+
+.gt-bg-gray-circle-lg {
+  background-color: #ebebeb;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.gt-section-label-blue {
+  background-color: #096ac6;
+  border-radius: 4px;
+  padding: 5.5px 9.5px;
+  margin: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.gt-section-label-rose {
+  background-color: #e53935;
+  border-radius: 7px;
+  padding: 5.5px 9.5px;
+  margin: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.gt-section-label-dark {
+  background-color: #323232;
+  border-radius: 7px;
+  padding: 5.5px 9.5px;
+  margin: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.gt-section-label-green {
+  background-color: #69c608;
+  border-radius: 7px;
+  padding: 5.5px 9.5px;
+  margin: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.gt-bg-header {
+  background-color: #ffffff;
+  color: gray;
+  font-size: 12px;
+  text-align: left;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 70px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.gt-bg-content{
+  background-color: #ffffff;
+  color: gray;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.gt-collapse-header .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gt-collapse-header .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.gt-expansion-header {
+  height: 64px !important;
+}
+
+.gt-header {
+  background-color: #f0f1f0;
+  color: white;
+  font-size: 18px;
+  align-items: center;
+  padding: 6px;
+}
+
+/*Estilo temporal hasta implementar scroll*/
+
+.gt-menu-buttons {
+  font-size: 27px !important;
+}
+
+.gt-button-menu {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+  width: 100% !important;
+  background: white;
+  color: black;
+  border-radius: 0px !important;
+  font-weight: normal !important;
+}
+
+.btn {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
+}
+
+.gt-bg-primary {
+  background-color: #096ac6 !important;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.gt-bg-primary:hover {
+  background-color: #096ac6 !important;
+  color: white !important;
+}
+
+.gt-btn-primary {
+  background-color: #096ac6 !important;
+}
+
+.gt-btn-primary:hover {
+  background-color: #446fb1 !important;
+}
+
+.gt-btn-rose {
+  background-color: #e53935 !important;
+}
+
+.gt-btn-rose:hover {
+  background-color: #db7574 !important;
+}
+
+.gt-btn-green {
+  background-color: #69c608 !important;
+}
+
+.gt-btn-green:hover {
+  background-color: #57a106 !important;
+}
+
+.gt-btn-orange {
+  background-color: #fa8e00 !important;
+}
+
+.gt-btn-orange:hover {
+  background-color: #d87c03 !important;
+}
+
+.gt-btn-purple {
+  background-color: #8e00fa !important;
+}
+
+.gt-btn-purple:hover {
+  background-color: #7606cc !important;
+}
+
+.gt-btn-green-s {
+  background-color: #02bb74 !important;
+}
+
+.gt-btn-green-s:hover {
+  background-color: #04d87c !important;
+}
+
+.gt-btn-red {
+  background-color: #f44336 !important;
+}
+
+.gt-btn-red:hover {
+  background-color: #ce2f23 !important;
+}
+
+.gt-btn-silver {
+  background-color: rgb(145, 145, 145) !important;
+}
+
+.gt-btn-silver:hover {
+  background-color: silver !important;
+}
+
+.gt-btn-dark {
+  background-color: #323232 !important;
+}
+
+.gt-btn-dark:hover {
+  background-color: #4e4e4e !important;
+}
+
+.gt-btn-yellow {
+  background-color: #ffeb3b !important;
+  color: black !important;
+}
+
+.gt-btn-yellow:hover {
+  background-color: #e9d62c !important;
+}
+
+.gt-btn-light {
+  background-color: #ffffff !important;
+  color: black !important;
+  align-items: center;
+}
+
+.gt-btn-light:hover {
+  background-color: #e0e0e0 !important;
+}
+
+.gt-btn-multi {
+  background-color: #7e88a6 !important;
+}
+
+.gt-btn-multi:hover {
+  background-color: rgb(86, 149, 209) !important;
+}
+
+@media screen and (max-width: 650px) {
+  .gt-min-size {
     background-color: #ffffff;
     color: black;
-    font-size: 14px;
-    margin: 15px;
-    padding: 30px;
   }
-  
-  .gt-primary {
-    color: #096ac6;
-  }
-  
-  .gt-rose {
-    color: #e53935;
-  }
-  
-  .gt-green {
-    color: #69c608;
-  }
-  .gt-bg-gray-circle {
-    background-color: #ebebeb;
-    border-radius: 40px;
-    width: 80px;
-    height: 80px;
-    display: inline-block;
-  }
-  
-  .gt-bg-gray-circle-lg {
-    background-color: #ebebeb;
-    border-radius: 50px;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-  }
-  
-  .gt-section-label-blue {
-    background-color: #096ac6;
-    border-radius: 4px;
-    padding: 5.5px 9.5px;
-    margin: 5px;
-    font-size: 14px;
-    color: white;
-  }
-  
-  .gt-section-label-rose {
-    background-color: #e53935;
-    border-radius: 7px;
-    padding: 5.5px 9.5px;
-    margin: 5px;
-    font-size: 14px;
-    color: white;
-  }
-  
-  .gt-section-label-dark {
-    background-color: #323232;
-    border-radius: 7px;
-    padding: 5.5px 9.5px;
-    margin: 5px;
-    font-size: 14px;
-    color: white;
-  }
-  
-  .gt-section-label-green {
-    background-color: #69c608;
-    border-radius: 7px;
-    padding: 5.5px 9.5px;
-    margin: 5px;
-    font-size: 14px;
-    color: white;
-  }
-  
-  .gt-bg-header {
-    background-color: #7e88a6;
-    color: white;
-    padding: 6px;
-    text-align: center;
-  }
-  
-  .gt-collapse-header .mat-expansion-panel-header-description {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .gt-collapse-header .mat-expansion-panel-header-title,
-  .example-headers-align .mat-expansion-panel-header-description {
-    flex-basis: 0;
-  }
-  
-  .gt-expansion-header {
-    height: 64px !important;
-  }
-  
-  .gt-header {
-    background-color: #f0f1f0;
-    color: white;
-    font-size: 18px;
-    align-items: center;
-    padding: 6px;
-  }
-  /*Estilo temporal hasta implementar scroll*/
-   
-  .gt-menu-buttons {
-    font-size: 27px !important;
-  }
-  
-  .gt-button-menu {
-    padding-top: 7px !important;
-    padding-bottom: 7px !important;
-    width: 100% !important;
-    background: white;
-    color: black;
-    border-radius: 0px !important;
-    font-weight: normal !important;
-  }
-  
-  .btn {
-    margin-bottom: 5px !important;
-    border-radius: 3px !important;
-    color: white !important;
-    font-size: 16px !important;
-    font-weight: normal !important;
-  }
-  
-  .gt-bg-primary {
-    background-color: #096ac6 !important;
-    color: white;
-    vertical-align: middle;
-    text-align: center;
-  }
-  .gt-bg-primary:hover {
-    background-color: #096ac6 !important;
-    color: white !important;
-  }
-  
-  .gt-btn-primary {
-    background-color: #096ac6 !important;
-  }
-  .gt-btn-primary:hover {
-    background-color: #446fb1 !important;
-  }
-  
-  .gt-btn-rose {
-    background-color: #e53935 !important;
-  }
-  .gt-btn-rose:hover {
-    background-color: #db7574 !important;
-  }
-  
-  .gt-btn-green {
-    background-color: #69c608 !important;
-  }
-  .gt-btn-green:hover {
-    background-color: #57a106 !important;
-  }
-  
-  .gt-btn-orange {
-    background-color: #fa8e00 !important;
-  }
-  .gt-btn-orange:hover {
-    background-color: #d87c03 !important;
-  }
-  
-  .gt-btn-purple {
-    background-color: #8e00fa !important;
-  }
-  .gt-btn-purple:hover {
-    background-color: #7606cc !important;
-  }
-  
-  .gt-btn-green-s {
-    background-color: #02bb74 !important;
-  }
-  .gt-btn-green-s:hover {
-    background-color: #04d87c !important;
-  }
-  
-  .gt-btn-red {
-    background-color: #f44336 !important;
-  }
-  .gt-btn-red:hover {
-    background-color: #ce2f23 !important;
-  }
-  
-  .gt-btn-silver {
-    background-color: rgb(145, 145, 145) !important;
-  }
-  .gt-btn-silver:hover {
-    background-color: silver !important;
-  }
-  
-  .gt-btn-dark {
-    background-color: #323232 !important;
-  }
-  .gt-btn-dark:hover {
-    background-color: #4e4e4e !important;
-  }
-  
-  .gt-btn-yellow {
-    background-color: #ffeb3b !important;
-    color: black !important;
-  }
-  .gt-btn-yellow:hover {
-    background-color: #e9d62c !important;
-  }
-  
-  .gt-btn-light {
-    background-color: #ffffff !important;
-    color: black !important;
-    align-items: center;
-  }
-  .gt-btn-light:hover {
-    background-color: #e0e0e0 !important;
-  }
-  
-  .gt-btn-multi {
-    background-color: #7e88a6 !important;
-  }
-  .gt-btn-multi:hover {
-    background-color: rgb(86, 149, 209) !important;
-  }
-  
-  @media screen and (max-width: 650px) {
-    .gt-min-size {
-      background-color: #ffffff;
-      color: black;
-    }
-  }
-  
-  @media screen and (max-height: 660px) {
-    .gt-display-h-none {
-      height: 100%;
-      background-color: white;
-      width: 100%;
-      border-radius: 0px;
-      box-shadow: 0px 0px 0px;
-    }
-  }
-  
-  @media screen and (max-width: 500px) {
-    .gt-display-w-none {
-      height: 100%;
-      background-color: white;
-      width: 100%;
-      border-radius: 0px;
-      box-shadow: 0px 0px 0px;
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
-    .gt-display-none-blue {
-      display: none;
-    }
-  }
-  
-  @media screen and (max-width: 991px) {
-    .gt-display-none {
-      display: none !important;
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
-    .gt-display-w-none-r {
-      height: 100%;
-      background-color: white;
-      width: 100%;
-      border-radius: 0px;
-      box-shadow: 0px 0px 0px;
-    }
-  }
-  .gt-center-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .gt-height-100 {
+}
+
+@media screen and (max-height: 660px) {
+  .gt-display-h-none {
     height: 100%;
+    background-color: white;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px;
   }
-  
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .gt-display-w-none {
+    height: 100%;
+    background-color: white;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px;
   }
-  
-  .gt-input-text {
-    background: none !important;
-    font-size: 18px;
-    border: 0px !important;
-    border-bottom: 1px solid gray !important;
+}
+
+@media screen and (max-width: 767px) {
+  .gt-display-none-blue {
+    display: none;
   }
-  
-  .gt-hover:hover {
-    background-color: #e0dedf;
+}
+
+@media screen and (max-width: 991px) {
+  .gt-display-none {
+    display: none !important;
   }
-  
-  .gt-f-18 {
-    font-size: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .gt-display-w-none-r {
+    height: 100%;
+    background-color: white;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px;
   }
-  
-  .gt-panel-title {
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 10px;
-  }
-  
+}
+
+.gt-center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gt-height-100 {
+  height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gt-input-text {
+  background: none !important;
+  font-size: 18px;
+  border: 0px !important;
+  border-bottom: 1px solid gray !important;
+}
+
+.gt-hover:hover {
+  background-color: #e0dedf;
+}
+
+.gt-f-18 {
+  font-size: 18px;
+}
+
+.gt-panel-title {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 10px;
+}

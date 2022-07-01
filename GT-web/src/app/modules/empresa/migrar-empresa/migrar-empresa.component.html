@@ -1,12 +1,38 @@
-<div class="grt-bg-header mt-5 pt-3" style="display: flex; align-items: center; font-weight: lighter">
+<div class="gt-bg-header">
+  <span>
+    <i class="mdi mdi-home mr-1 ml-2 f-15"></i>
+    Empresa
+    <i class="mdi mdi-chevron-right"></i>
     <span>
-      <i class="mdi mdi-home mr-1 ml-2 f-15"></i>
-      Empresa
-      <i class="mdi mdi-chevron-right" style="font-size: 20px"></i>
-      <span style="font-size: 15px">
-        Migrar template
-      </span>
+      Migrar versión
     </span>
-  </div>
+  </span>
+</div>
+<div class="gt-bg-content">
+  <mat-horizontal-stepper #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Importar template</ng-template>
+      <app-importar-template></app-importar-template>
 
-<app-file-upload></app-file-upload>
+      <div class="m-0 row justify-content-center">
+        <div class="col-auto text-center">
+          <!--<button class="gt-btn-primary btn" (click)="goBack(stepper)" type="button">Back</button>-->
+          <button class="gt-btn-primary btn" (click)="goForward(stepper)" type="button">Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Filtrar aplicaciones </ng-template>
+      <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Cifrado de contraseña</ng-template>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Rol agrupador</ng-template>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

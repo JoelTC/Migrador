@@ -39,12 +39,12 @@ public class FileControllerTest {
 		final InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("test.png");
 		avatar = new MockMultipartFile("file", "test.png", "image/png", inputStream);
 
-		Mockito.when(service.save(avatar, PATH)).thenReturn(ESTREG);
+		Mockito.when(service.save(avatar)).thenReturn(ESTREG);
 	}
 
 	@Test
 	public void uploadFiles() throws MigradorException {
-		final Response<String> response = controller.uploadFiles(avatar, PATH);
+		final Response<String> response = controller.uploadFiles(avatar);
 		
 		assertEquals(response.getStatuts(), SUCCESS_STATUS);
 		assertEquals(response.getCode(), SUCCESS_CODE);

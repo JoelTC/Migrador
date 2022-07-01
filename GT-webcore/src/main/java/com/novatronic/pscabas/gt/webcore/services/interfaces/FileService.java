@@ -10,7 +10,7 @@ import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 
 public interface FileService {
 
-	public String save(MultipartFile pFile, String pPath) throws MigradorException;
+	public String save(MultipartFile pFile) throws MigradorException;
 
 	public Resource load(String pFilename) throws MigradorException;
 

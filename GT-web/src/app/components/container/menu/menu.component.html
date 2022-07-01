@@ -3,27 +3,27 @@
     <button (click)="show(1)" class="btn-item btn">
         <span class="font-weight-light">EMPRESA </span>
         <span style="float:right">
-            <i class="mdi mdi-plus f-11"></i></span>
+            <i class="mdi mdi-plus f-18"></i></span>
     </button>
 
     <div *ngIf="modules[0].state" class="ele">
         <button class="btn-menu btn" [routerLink]="['migrarEmpresa']">
-            <i class="mdi mdi-menu-right f-18 p-10"></i>Migrar template
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Migrar versión
         </button>
         <button class="btn-menu btn" [routerLink]="['configuracionInicial/conTipVal']">
-            <i class="mdi mdi-menu-right f-18 p-10"></i>Filtrar empresa
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Filtrar aplicaciones
         </button>
         <button class="btn-menu btn" [routerLink]="['configuracionInicial/configFiltros']">
-            <i class="mdi mdi-menu-right f-18 p-10"></i>Cifrado
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Cifrado de contraseña
         </button>
         <button class="btn-menu btn" [routerLink]="['configuracionInicial/configFiltros']">
-            <i class="mdi mdi-menu-right f-18 p-10"></i>Rol agrupado
+            <i class="mdi mdi-menu-right f-18 p-10"></i>Rol agrupador
         </button>
     </div>
 
     <button class="btn-item btn" [routerLink]="['migrarEmpresa']">
         <span class="font-weight-light">APLICACION </span>
         <span style="float:right">
-            <i class="mdi mdi-plus f-11"></i></span>
+            <i class="mdi mdi-menu-right f-18"></i></span>
     </button>
 </div>

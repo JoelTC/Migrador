@@ -1,0 +1,41 @@
+<div class="container">
+    <form>
+        <div class="m-0 row justify-content-center align-items-center">
+            <div class="col-md-2">
+                <label class="text">Convertir de: </label>
+            </div>
+            <div class="col-md-2">
+                <select placeholder="Seleccione versión" required class="form-control">
+                    <option disabled selected value="">Seleccione</option>
+                    <option [value]="'2.1'">2.1</option>
+                    <option [value]="'2.1'">2.3</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="text">a</label>
+            </div>
+            <div class="col-md-2">
+                <select placeholder="Seleccione versión" required class="form-control" readonly>
+                    <option disabled selected value="">Seleccione</option>
+                    <option selected [value]="'2.1'">3.03</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-end align-items-center" style="margin-top: 20px;">
+            <div class="col-md-2">
+                <label class="text">Tipo de rol: </label>
+            </div>
+            <div class="col-md-2">
+                <select placeholder="Seleccione versión" required class="form-control">
+                    <option disabled selected value="">Seleccione</option>
+                    <option [value]="'OPCION'">OPCION</option>
+                    <option [value]="'DATA'">DATA</option>
+                    <option [value]="'SERVICIO'">SERVICIO</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+
+<app-file-upload></app-file-upload>

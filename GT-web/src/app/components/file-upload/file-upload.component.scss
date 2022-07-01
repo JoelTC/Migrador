@@ -12,11 +12,11 @@
 
 #template {
     display: none;
-
 }
 
 .gt-btn-file {
     display: block;
+    width: 300px;
     padding: 10px 20px;
     border: none;
     color: #fff;
@@ -26,6 +26,7 @@
     cursor: pointer;
     font-family: sans-serif;
     text-align: center;
+    font-size: 16px;
     align-items: center;
 }
 

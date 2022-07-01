@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,16 @@ public class FileServiceImpl implements FileService {
 	private final Path rootFolder = Paths.get("uploads");
 
 	public static String nombreArchivo; // Variable estatica para el nombre del archivo
+	
+	@Value("${ruta}")
+	private String ruta;
+	
 	public static Path rutaFolder; // Variable estatica para la ruta en donde se alojara el archivo
 	public static File archivo; // Variable que contendra al documento xml
 
 	private String manejoNombre(String pFile, int i) {
 		// Se renombra el archivo con la fecha de carga
+		
 		String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constantes.DATE_FORMAT));
 
 		if (i == 0) {
@@ -40,9 +46,9 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public String save(MultipartFile pFile, String pPath) throws MigradorException {
+	public String save(MultipartFile pFile) throws MigradorException {
 		try {
-			rutaFolder = Paths.get(pPath);
+			rutaFolder = Paths.get(ruta);
 			nombreArchivo = manejoNombre(pFile.getOriginalFilename(), 0);
 			archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 

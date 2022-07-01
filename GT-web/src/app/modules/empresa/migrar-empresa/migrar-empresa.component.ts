@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MatStepper } from '@angular/material/stepper';
 @Component({
   selector: 'app-migrar-empresa',
   templateUrl: './migrar-empresa.component.html',
@@ -11,5 +11,13 @@ export class MigrarEmpresaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  goBack(stepper: MatStepper){
+    stepper.previous();
+}
+
+goForward(stepper: MatStepper){
+    stepper.next();
+}
 
 }
