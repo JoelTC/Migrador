@@ -15,6 +15,12 @@
   border-radius: 8px;
 }
 
+.gt-container {
+  margin: 60px auto 0 auto;
+  width: 100%;
+  max-width: 800px;
+}
+
 .gt-card {
   background-color: #ffffff;
   color: black;

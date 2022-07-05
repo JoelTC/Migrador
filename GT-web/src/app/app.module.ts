@@ -40,7 +40,7 @@ registerLocaleData(localePe, 'es');
     InicioModule,
     AplicacionModule,
     SharedModule,
-    EmpresaModule
+    EmpresaModule,
   ],
   providers:[
     { provide: LOCALE_ID, useValue: 'es-PE' },

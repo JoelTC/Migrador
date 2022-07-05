@@ -1,0 +1,56 @@
+<div class="gt-bg-header">
+    <span>
+        <i class="mdi mdi-home mr-1 ml-2 f-15"></i>
+        Empresa
+        <i class="mdi mdi-chevron-right"></i>
+        <span>
+            Cifrado de contraseña
+        </span>
+    </span>
+</div>
+
+<div class="gt-bg-content">
+    <div class="container">
+        <app-file-upload></app-file-upload>
+        <form>
+            <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+                <div class="col-md-2">
+                    <label class="text">Cifrao de origen:</label>
+                </div>
+                <div class="col-md-2">
+                    <select placeholder="Seleccione versión" [(ngModel)]="selectedCifradoO" name="versionO"
+                        class="form-control" readonly>
+                        <option disabled selected value="">Seleccione</option>
+                        <option [value]="'0'">HARDWARE</option>
+                        <option [value]="'1'">SOFTWARE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center" style="margin-top: 10px;">
+                <div class="col-md-2">
+                    <label class="text">Cifrao de destino:</label>
+                </div>
+                <div class="col-md-2">
+                    <select placeholder="Seleccione versión" [(ngModel)]="selectedCifradoD" name="versionO"
+                        class="form-control">
+                        <option disabled selected value="">Seleccione</option>
+                        <option [value]="'0'">HARDWARE</option>
+                        <option [value]="'1'">SOFTWARE</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+       <!--<div>
+            <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+
+            <input name="text" id="boton" [readonly]="!checked" />
+        </div>-->
+
+        <div class="row justify-content-center" style="margin-top: 20px;">
+            <div class="col-auto text-center">
+                <button class="gt-btn-operacion" type="button" (click)="migrarCifrado()">Generar</button>
+            </div>
+        </div>
+    </div>

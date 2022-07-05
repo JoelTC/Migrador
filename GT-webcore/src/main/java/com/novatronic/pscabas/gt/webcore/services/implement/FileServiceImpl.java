@@ -21,8 +21,6 @@ import com.novatronic.pscabas.gt.webcore.util.Constantes;
 @Service
 public class FileServiceImpl implements FileService {
 
-	private final Path rootFolder = Paths.get("uploads");
-
 	public static String nombreArchivo; // Variable estatica para el nombre del archivo
 	
 	@Value("${ruta}")
@@ -82,14 +80,10 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public Resource load(String pFilename) throws MigradorException {
 		try {
-			archivo = new File(rutaFolder + "\\" + pFilename);
-			if (archivo.exists()) {
-				Path file = rutaFolder.resolve(pFilename);
-				Resource resource = new UrlResource(file.toUri());
-				return resource;
-			} else {
-				return null;
-			}
+			rutaFolder = Paths.get(ruta);
+			Path file = rutaFolder.resolve(pFilename);
+			Resource resource = new UrlResource(file.toUri());
+			return resource;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
@@ -99,7 +93,8 @@ public class FileServiceImpl implements FileService {
 
 	@Override
 	public Stream<Path> loadAll() throws Exception {
-		return Files.walk(rootFolder, 1).filter(path -> !path.equals(rootFolder)).map(rootFolder::relativize);
+		rutaFolder = Paths.get(ruta);
+		return Files.walk(rutaFolder, 1).filter(path -> !path.equals(rutaFolder)).map(rutaFolder::relativize);
 	}
 
 }

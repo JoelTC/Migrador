@@ -1,0 +1,60 @@
+<div class="gt-bg-header">
+    <span>
+        <i class="mdi mdi-home mr-1 ml-2 f-15"></i>
+        Aplicación
+        <i class="mdi mdi-chevron-right"></i>
+        <span>
+            Migrar versión
+        </span>
+    </span>
+</div>
+<div class="gt-bg-content">
+    <div class="container">
+        <form>
+            <div class="m-0 row justify-content-center align-items-center">
+                <div class="col-md-2">
+                    <label class="text">Convertir de: </label>
+                </div>
+                <div class="col-md-2">
+                    <select placeholder="Seleccione versión" [(ngModel)]="selectedVersion" name="versionO"
+                        class="form-control">
+                        <option disabled selected value="">Seleccione</option>
+                        <option [value]="'2.1'">2.1</option>
+                        <option [value]="'2.1'">2.3</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label class="text">a</label>
+                </div>
+                <div class="col-md-2">
+                    <select placeholder="Seleccione versión" required name="versionD" class="form-control" readonly>
+                        <option disabled selected value="">Seleccione</option>
+                        <option selected [value]="'3.03'">3.03</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row justify-content-end align-items-center" style="margin-top: 20px;">
+                <div class="col-md-2">
+                    <label class="text">Tipo de rol: </label>
+                </div>
+                <div class="col-md-2">
+                    <select placeholder="Seleccione tipo" [(ngModel)]="selectedTipo" class="form-control" name="tipo">
+                        <option disabled selected value="">Seleccione</option>
+                        <option [value]="'OPCION'">OPCION</option>
+                        <option [value]="'DATA'">DATA</option>
+                        <option [value]="'SERVICIO'">SERVICIO</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <app-file-upload></app-file-upload>
+
+        <div class="m-0 row justify-content-center">
+            <div class="col-auto text-center">
+                <button class="gt-btn-operacion" type="button" (click)="migrarAplicacion()">Migrar</button>
+            </div>
+        </div>
+    </div>
+</div>

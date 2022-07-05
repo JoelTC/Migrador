@@ -7,21 +7,21 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { EmpresaRoutingModule } from './empresa-routing.module';
 import { MigrarEmpresaComponent } from './migrar-empresa/migrar-empresa.component';
-import { FileUploadComponent } from 'src/app/components/file-upload/file-upload.component';
 import { ImportarTemplateComponent } from './migrar-empresa/importar-template/importar-template.component';
+import { CifradoComponent } from './cifrado/cifrado.component';
 
 @NgModule({
   declarations: [
     MigrarEmpresaComponent,
-    FileUploadComponent,
-    ImportarTemplateComponent
+    ImportarTemplateComponent,
+    CifradoComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     SharedModule,
-    EmpresaRoutingModule
+    EmpresaRoutingModule,
   ]
 })
 export class EmpresaModule { }

@@ -23,9 +23,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FileUploadComponent } from './componentes/file-upload/file-upload.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [FileUploadComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -75,6 +76,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatCheckboxModule,
+    FileUploadComponent
   ]
 })
 export class SharedModule { }

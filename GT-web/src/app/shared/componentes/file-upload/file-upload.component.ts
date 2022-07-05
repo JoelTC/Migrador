@@ -28,6 +28,7 @@ export class FileUploadComponent implements OnInit {
     if (this.file) {
       this.nombre_file = this.file![0].name;
       this.load = true;
+      this.iniciar();
     }
   }
 

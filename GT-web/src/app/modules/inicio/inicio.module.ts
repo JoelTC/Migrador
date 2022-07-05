@@ -6,10 +6,13 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { InicioRoutingModule } from './inicio-routing.module';
+import { InicioComponent } from './inicio/inicio.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    InicioComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,

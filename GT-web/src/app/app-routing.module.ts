@@ -11,15 +11,30 @@ const routes: Routes = [
     component: ContainerComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'inicio',
+        pathMatch: 'full',
+      },
+      {
+        path: 'inicio',
+        loadChildren: () =>
+          import('./modules/inicio/inicio.module').then((m) => m.InicioModule)
+      },
+      {
         path: 'migrarEmpresa',
         loadChildren: () =>
           import('./modules/empresa/empresa.module').then((m) => m.EmpresaModule)
+      },
+      {
+        path: 'migrarAplicacion',
+        loadChildren: () =>
+          import('./modules/aplicacion/aplicacion.module').then((m) => m.AplicacionModule)
       }
     ]
   },
   {
     path: '**',
-    redirectTo: 'file',
+    redirectTo: '',
   },
 ];
 

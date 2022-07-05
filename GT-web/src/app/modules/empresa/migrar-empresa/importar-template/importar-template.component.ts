@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MigrarEmpresaComponent } from '../migrar-empresa.component';
 
 @Component({
   selector: 'app-importar-template',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./importar-template.component.scss']
 })
 export class ImportarTemplateComponent implements OnInit {
+  selectedRol: string;
+  selectedVersion: string;
 
-  constructor() { }
+  constructor() {
+    this.selectedRol = "";
+    this.selectedVersion = "";
+  }
 
   ngOnInit(): void {
+  }
+
+  setVersion() {
+  }
+
+  setTipo() {
   }
 
 }

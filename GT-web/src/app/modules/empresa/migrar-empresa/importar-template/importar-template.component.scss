@@ -4,3 +4,24 @@
     color: black;
     align-items: center;
 }
+
+.gt-btn-operacion {
+    display: block;
+    width: 300px;
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    background-color: #398a80;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 16px;
+    align-items: center;
+  }
+  
+  .gt-btn-operacion:hover{
+    transition: all .4s;
+    background-color: #396480;
+  }

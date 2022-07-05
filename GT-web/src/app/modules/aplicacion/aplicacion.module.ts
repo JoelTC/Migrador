@@ -6,10 +6,13 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { AplicacionRoutingModule } from './aplicacion-routing.module';
+import { MigrarAplicacionComponent } from './migrar-aplicacion/migrar-aplicacion.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MigrarAplicacionComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

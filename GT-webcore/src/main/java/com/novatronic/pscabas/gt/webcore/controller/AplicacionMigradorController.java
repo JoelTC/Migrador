@@ -16,7 +16,7 @@ import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.AplicacionMigradorService;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("gt-webcore/api/v1/aplicacion")
 public class AplicacionMigradorController {
 

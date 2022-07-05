@@ -12,7 +12,7 @@ export class AplicacionService {
     this.url = 'http://localhost:8080/gt-webcore/api/v1/aplicacion/';
   }
 
-  migrarAplicacion(tipo: string, version: string) {
+  migrarAplicacion(version: string, tipo: string) {
     let params = new HttpParams()
       .set('version', version)
       .set('tipo', tipo);
