@@ -7,7 +7,7 @@ import { FileService } from 'src/app/services/file.service';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
-  file: FileList | null = null;
+  static file: FileList | null = null;
 
   //Variables auxiliares para controlar los eventos
   public file_xml: string;
@@ -24,20 +24,20 @@ export class FileUploadComponent implements OnInit {
 
   cargarArchivo(event: Event) {
     const element = event.currentTarget as HTMLInputElement;
-    this.file = element.files;
-    if (this.file) {
-      this.nombre_file = this.file![0].name;
+    FileUploadComponent.file = element.files;
+    if (FileUploadComponent.file) {
+      this.nombre_file = FileUploadComponent.file![0].name;
       this.load = true;
-      this.iniciar();
     }
   }
 
-  iniciar() {
-    this.serviceFile.uploadFile(this.file![0]).subscribe({
+  upload() {
+    this.serviceFile.uploadFile(FileUploadComponent.file![0]).subscribe({
       next: (result: any) => {
         console.log("Mensaje: ", result);
       },
       error: (error) => { "Error: " + console.log(error) }
     })
   }
+
 }

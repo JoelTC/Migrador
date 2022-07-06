@@ -15,22 +15,21 @@
                 <div class="col-md-2">
                     <label class="text">Convertir de: </label>
                 </div>
-                <div class="col-md-2">
-                    <select placeholder="Seleccione versión" [(ngModel)]="selectedVersion" name="versionO"
+                <div class="col-md-3">
+                    <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersion" name="versionO"
                         class="form-control">
-                        <option disabled selected value="">Seleccione</option>
-                        <option [value]="'2.1'">2.1</option>
-                        <option [value]="'2.1'">2.3</option>
-                    </select>
+                        <mat-option [value]="'2.1'">2.1</mat-option>
+                        <mat-option [value]="'2.1'">2.3</mat-option>
+                    </mat-select>
                 </div>
                 <div class="col-md-1">
                     <label class="text">a</label>
                 </div>
-                <div class="col-md-2">
-                    <select placeholder="Seleccione versión" required name="versionD" class="form-control" readonly>
-                        <option disabled selected value="">Seleccione</option>
-                        <option selected [value]="'3.03'">3.03</option>
-                    </select>
+                <div class="col-md-3">
+                    <mat-select placeholder="Seleccionar versión" required name="versionD" class="form-control"
+                        readonly>
+                        <mat-option selected [value]="'3.03'">3.03</mat-option>
+                    </mat-select>
                 </div>
             </div>
 
@@ -38,13 +37,13 @@
                 <div class="col-md-2">
                     <label class="text">Tipo de rol: </label>
                 </div>
-                <div class="col-md-2">
-                    <select placeholder="Seleccione tipo" [(ngModel)]="selectedTipo" class="form-control" name="tipo">
-                        <option disabled selected value="">Seleccione</option>
-                        <option [value]="'OPCION'">OPCION</option>
-                        <option [value]="'DATA'">DATA</option>
-                        <option [value]="'SERVICIO'">SERVICIO</option>
-                    </select>
+                <div class="col-md-3">
+                    <mat-select placeholder="Seleccionar tipo" [(ngModel)]="selectedTipo" class="form-control"
+                        name="tipo">
+                        <mat-option [value]="'OPCION'">OPCION</mat-option>
+                        <mat-option [value]="'DATA'">DATA</mat-option>
+                        <mat-option [value]="'SERVICIO'">SERVICIO</mat-option>
+                    </mat-select>
                 </div>
             </div>
         </form>

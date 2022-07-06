@@ -46,7 +46,7 @@ public class EmpresaMigradorController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "filtrarAplicacion", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "filtrarAplicacion", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Response<DocEmpresa> filtrarAplicacion(@RequestBody List<AplicacionDTO> pAplicacion)
 			throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
@@ -60,7 +60,7 @@ public class EmpresaMigradorController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "migrarCifrado", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "migrarCifrado", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Response<String> migrarCifrado(@RequestBody CifradoRequest pCifrado) throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
 				empresaMigradorService.migrarCifrado(pCifrado));

@@ -15,34 +15,48 @@
         <form>
             <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
                 <div class="col-md-2">
-                    <label class="text">Cifrao de origen:</label>
+                    <div class="row justify-content-end">
+                        <i class="mdi mdi-numeric-1-circle f-18" matTooltip="{{tipMensaje1}}"
+                            matTooltipPosition="above"></i>
+                        <i class="mdi mdi-numeric-2-circle f-18" matTooltip="{{tipMensaje2}}"
+                            matTooltipPosition="below"></i>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <select placeholder="Seleccione versión" [(ngModel)]="selectedCifradoO" name="versionO"
-                        class="form-control" readonly>
-                        <option disabled selected value="">Seleccione</option>
-                        <option [value]="'0'">HARDWARE</option>
-                        <option [value]="'1'">SOFTWARE</option>
-                    </select>
+                <div class="col-md-2" style="width: 100px;">
+                    <button class="gt-btn-silver btn" type="button" (click)="listarCifrado()">Cifrado</button>
                 </div>
-            </div>
+                <div class="col-md-6">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-4">
+                            <label class="text">Cifrao de origen:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-select class="form-control" placeholder="Seleccionar cifrado"
+                                [(ngModel)]="selectedCifradoO" name="cifradoO" class="form-control" readonly>
+                                <mat-option disabled selected [value]="'0'">HARDWARE</mat-option>
+                                <mat-option disabled selected [value]="'1'">SOFTWARE</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
 
-            <div class="row justify-content-center align-items-center" style="margin-top: 10px;">
-                <div class="col-md-2">
-                    <label class="text">Cifrao de destino:</label>
-                </div>
-                <div class="col-md-2">
-                    <select placeholder="Seleccione versión" [(ngModel)]="selectedCifradoD" name="versionO"
-                        class="form-control">
-                        <option disabled selected value="">Seleccione</option>
-                        <option [value]="'0'">HARDWARE</option>
-                        <option [value]="'1'">SOFTWARE</option>
-                    </select>
+                    <div class="row justify-content-center align-items-center" style="margin-top: 10px;">
+                        <div class="col-md-4">
+                            <label class="text">Cifrao de destino:</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <mat-select class="form-control" placeholder="Seleccionar cifrado"
+                                [(ngModel)]="selectedCifradoD" name="cifradoD">
+                                <mat-option [value]="'0'">HARDWARE</mat-option>
+                                <mat-option [value]="'1'">SOFTWARE</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
 
-       <!--<div>
+        <!--<div>
             <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
 
             <input name="text" id="boton" [readonly]="!checked" />
@@ -50,7 +64,8 @@
 
         <div class="row justify-content-center" style="margin-top: 20px;">
             <div class="col-auto text-center">
-                <button class="gt-btn-operacion" type="button" (click)="migrarCifrado()">Generar</button>
+                <button class="gt-btn-operacion" type="button" [disabled]="selectedCifradoO!='0'"
+                    (click)="migrarCifrado()">Generar</button>
             </div>
         </div>
     </div>

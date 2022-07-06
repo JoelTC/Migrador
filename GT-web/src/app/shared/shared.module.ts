@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -34,6 +34,7 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
     MatCardModule,
     MatExpansionModule,
     MatSidenavModule,
+    MatSelectModule,
     MatListModule,
     MatIconModule,
     FormsModule,
@@ -51,6 +52,7 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
     MatProgressSpinnerModule,
     MatMenuModule,
     MatCheckboxModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   exports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
     MatCardModule,
     MatExpansionModule,
     MatSidenavModule,
+    MatSelectModule,
     MatListModule,
     MatIconModule,
     FormsModule,
@@ -76,7 +79,8 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
     MatProgressSpinnerModule,
     MatMenuModule,
     MatCheckboxModule,
-    FileUploadComponent
+    FileUploadComponent,
+    NgMultiSelectDropDownModule
   ]
 })
 export class SharedModule { }
