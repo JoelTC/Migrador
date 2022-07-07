@@ -6,10 +6,10 @@ import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file
 
 @Component({
   selector: 'app-filtraraplicacion',
-  templateUrl: './filtraraplicacion.component.html',
-  styleUrls: ['./filtraraplicacion.component.scss']
+  templateUrl: './filtrar-aplicacion.component.html',
+  styleUrls: ['./filtrar-aplicacion.component.scss']
 })
-export class FiltraraplicacionComponent implements OnInit {
+export class FiltrarAplicacionComponent implements OnInit {
   aplicacionDTO: AplicacionDTO[] = [];
   selectedAplicacion: AplicacionDTO[] = [];
 
@@ -19,7 +19,7 @@ export class FiltraraplicacionComponent implements OnInit {
 
   dropdownSettings = {};
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.dropdownSettings = {
       singleSelection: false,

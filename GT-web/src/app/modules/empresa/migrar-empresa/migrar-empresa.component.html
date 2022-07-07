@@ -12,26 +12,26 @@
   <mat-horizontal-stepper #stepper>
     <mat-step>
       <ng-template matStepLabel>Importar template</ng-template>
-      <app-importar-template></app-importar-template>
+      <app-empresa-importar-template></app-empresa-importar-template>
 
-      <div class="m-0 row justify-content-center">
+      <!--<div class="m-0 row justify-content-center">
         <div class="col-auto text-center">
-          <!--<button class="gt-btn-primary btn" (click)="goBack(stepper)" type="button">Back</button>-->
-          <button class="gt-btn-operacion" style="margin-top: 30px;" (click)="goForward(stepper)" type="button">Iniciar</button>
+          <button class="gt-btn-primary btn" (click)="goBack(stepper)" type="button">Back</button>
+          <button class="gt-btn-operacion" style="margin-top: 30px;" (click)="siguiente(stepper, 1)" type="button">Iniciar</button>
         </div>
-      </div>
+      </div>-->
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Filtrar aplicaciones </ng-template>
-      <button mat-button matStepperNext>Next</button>
+      <app-empresa-filtrar-aplicacion></app-empresa-filtrar-aplicacion>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Cifrado de contraseña</ng-template>
-
+      <app-empresa-cifrado></app-empresa-cifrado>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Rol agrupador</ng-template>
-
+      <app-empresa-rol-agrupador></app-empresa-rol-agrupador>
     </mat-step>
 
   </mat-horizontal-stepper>

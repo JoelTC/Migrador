@@ -1,0 +1,71 @@
+<div class="gt-bg-header">
+    <span>
+        <i class="mdi mdi-home mr-1 ml-2 f-15"></i>
+        Empresa
+        <i class="mdi mdi-chevron-right"></i>
+        <span>
+            Rol agrupador
+        </span>
+    </span>
+</div>
+
+<div class="gt-bg-content">
+    <div class="container">
+        <app-file-upload></app-file-upload>
+        <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+            <div class="col-md-2" style="width: 200px;">
+                <button class="gt-btn-silver btn" type="button" (click)="listarRolPadre()">Listar
+                    rol padre</button>
+            </div>
+            <div class="col-md-6">
+                <mat-select class="form-control" name="aplicacion" placeholder="Seleccionar rol agrupador"
+                    [(ngModel)]="selectedRolPadre" (ngModelChange)="listRol()">
+                    <mat-option *ngFor="let rol of lRolPadre" [value]="rol.mnemonico">{{rol.nombre}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div *ngIf="lRol" class="row justify-content-center align-items-center" style="margin-top: 20px;">
+            <div class="row justify-content-center align-items-center" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="col-auto text-center">
+                    <label class="text">Roles</label>
+                </div>
+            </div>
+            <div class="col-auto text-center" *ngFor="let rol of lRol">
+                <mat-label class="form-control"> {{rol.nombre}}</mat-label>
+            </div>
+            <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+                <div class="col-auto">
+                    <label class="text">Cifrado de origen:</label>
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" placeholder="Seleccionar cifrado" name="mnemonicoDestino"
+                        [(ngModel)]="mnemonicoDestino">
+                </div>
+                <div class="col-auto">
+                    <button class="gt-btn-silver btn" type="button" (click)="setMnemonico()">Cambiar nombre</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="lRolPadreReq" class="row justify-content-center align-items-center" style="margin-top: 20px;">
+            <div *ngFor="let rol of lRolPadreReq" class="row justify-content-center align-items-center" style="margin-top: 20px;">
+                <div class="col-auto">
+                    <label class="form-control">{{rol.mnemonicoOrigen}}</label>
+                </div>
+                <div class="col-auto">
+                    <i class="mdi mdi-arrow-right-bold-outline"></i>
+                </div>
+                <div class="col-auto">
+                    <label class="form-control">{{rol.mnemonicoDestino}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 20px;">
+            <div class="col-auto text-center">
+                <button class="gt-btn-operacion" type="button"
+                    (click)="renombrarRolPadre()">Renombrar</button>
+            </div>
+        </div>
+    </div>
+</div>

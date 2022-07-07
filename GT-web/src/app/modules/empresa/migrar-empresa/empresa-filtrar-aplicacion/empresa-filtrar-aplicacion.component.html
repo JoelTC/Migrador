@@ -1,0 +1,21 @@
+<div class="container">
+    <form>
+        <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+            <div class="col-md-2" style="width: 200px;">
+                <button class="gt-btn-silver btn" type="button" (click)="listarAplicacion()">Listar
+                    aplicaciones</button>
+            </div>
+            <div class="col-md-6">
+                <ng-multiselect-dropdown class="form-control drop" name="aplicacion" [settings]="dropdownSettings"
+                    [placeholder]="'Seleccionar aplicación'" [data]="aplicacionDTO" [(ngModel)]="selectedAplicacion">
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+    </form>
+
+    <div class="row justify-content-center" style="margin-top: 20px;">
+        <div class="col-auto text-center">
+            <button class="gt-btn-operacion" type="button" (click)="filtrarAplicacion()">Filtrar</button>
+        </div>
+    </div>
+</div>

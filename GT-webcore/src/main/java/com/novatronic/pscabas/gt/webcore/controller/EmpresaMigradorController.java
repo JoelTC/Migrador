@@ -31,7 +31,7 @@ public class EmpresaMigradorController {
 	private EmpresaMigradorService empresaMigradorService;
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "migrar", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "migrar", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Response<DocEmpresa> migrarEmpresa(@RequestBody MigradorEmpresaRequest pMigradorEmpresa)
 			throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
@@ -73,7 +73,7 @@ public class EmpresaMigradorController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "renombrarRolPadre", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "renombrarRolPadre", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Response<DocEmpresa> renombrarRolPadre(@RequestBody List<RolPadreRequest> pRolPadre)
 			throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",

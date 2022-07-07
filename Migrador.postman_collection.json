@@ -11,15 +11,12 @@
 			"item": [
 				{
 					"name": "01.1 - EmpresaMigrarAPILocal",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": \"1\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
+							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": \"0\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,11 +71,8 @@
 				},
 				{
 					"name": "02.1 - FiltrarAplicacionApi",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -137,11 +131,8 @@
 				},
 				{
 					"name": "03.1 - MigrarCifradoApi",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -290,12 +281,13 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.3.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/templateEMPRESA 3.0.xml"
 						},
 						{
 							"key": "path",
 							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "",

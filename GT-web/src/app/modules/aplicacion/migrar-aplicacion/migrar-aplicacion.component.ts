@@ -10,13 +10,15 @@ import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file
 })
 export class MigrarAplicacionComponent implements OnInit {
   selectedTipo: string;
-  selectedVersion: string;
+  selectedVersionO: string;
+  selectedVersionD: string;
 
   file: FileUploadComponent = new FileUploadComponent(this.serviceFile);
 
   constructor(private serviceAplicacion: AplicacionService, private serviceFile: FileService) {
     this.selectedTipo = "";
-    this.selectedVersion = "";
+    this.selectedVersionO = "";
+    this.selectedVersionD = "3.03";
   }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class MigrarAplicacionComponent implements OnInit {
   async migrarAplicacion() {
     this.file.upload();
     await this.delay(300);
-    this.serviceAplicacion.migrarAplicacion(this.selectedVersion, this.selectedTipo).subscribe({
+    this.serviceAplicacion.migrarAplicacion(this.selectedVersionO, this.selectedTipo).subscribe({
       next: (result: any) => {
         console.log('Doc: ', result);
       },
@@ -36,7 +38,4 @@ export class MigrarAplicacionComponent implements OnInit {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
-  //And call it
-
 }

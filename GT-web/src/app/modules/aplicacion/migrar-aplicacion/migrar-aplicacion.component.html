@@ -16,7 +16,7 @@
                     <label class="text">Convertir de: </label>
                 </div>
                 <div class="col-md-3">
-                    <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersion" name="versionO"
+                    <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersionO" name="versionO"
                         class="form-control">
                         <mat-option [value]="'2.1'">2.1</mat-option>
                         <mat-option [value]="'2.1'">2.3</mat-option>
@@ -26,8 +26,8 @@
                     <label class="text">a</label>
                 </div>
                 <div class="col-md-3">
-                    <mat-select placeholder="Seleccionar versión" required name="versionD" class="form-control"
-                        readonly>
+                    <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersionD" name="versionD"
+                        class="form-control" readonly>
                         <mat-option selected [value]="'3.03'">3.03</mat-option>
                     </mat-select>
                 </div>

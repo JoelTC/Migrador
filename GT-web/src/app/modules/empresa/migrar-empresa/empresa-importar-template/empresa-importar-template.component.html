@@ -1,0 +1,48 @@
+<div class="container">
+    <form>
+        <div class="m-0 row justify-content-center align-items-center">
+            <div class="col-md-2">
+                <label class="text">Convertir de: </label>
+            </div>
+            <div class="col-md-3">
+                <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersionO" name="versionO"
+                    class="form-control">
+                    <mat-option [value]="'2.1'">2.1</mat-option>
+                    <mat-option [value]="'2.3'">2.3</mat-option>
+                </mat-select>
+            </div>
+            <div class="col-md-1">
+                <label class="text">a</label>
+            </div>
+            <div class="col-md-3">
+                <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersionD" name="versionD"
+                    class="form-control" readonly>
+                    <mat-option disabled selected [value]="'3.03'">3.03</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+        <div class="row justify-content-end align-items-center" style="margin-top: 20px;">
+            <div class="col-md-2">
+                <label class="text">Tipo de rol: </label>
+            </div>
+            <div class="col-md-3">
+                <mat-select placeholder="Seleccionar tipo" [(ngModel)]="selectedTipo" class="form-control" name="tipo">
+                    <mat-option [value]="'OPCION'">OPCION</mat-option>
+                    <mat-option [value]="'DATA'">DATA</mat-option>
+                    <mat-option [value]="'SERVICIO'">SERVICIO</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </form>
+
+
+    <app-file-upload></app-file-upload>
+    <div class="row justify-content-center" style="margin-top: 20px;">
+        <div class="col-auto text-center">
+            <button class="gt-btn-operacion" type="button"
+                (click)="iniciar()">Iniciar</button>
+        </div>
+    </div>
+</div>
+

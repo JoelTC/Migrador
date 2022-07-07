@@ -188,6 +188,7 @@ public class EmpresaBusiness {
 			throws MigradorException {
 		try {
 			if ((pCifradoO != null || pCifradoO != null) && pCifradoO.equals("0") && pCifradoD.equals("1")) {
+				pDocEmpresa.setCifrado(pCifradoD);
 				for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
 					iUsuario.setContrasena(pPass);
 				}
@@ -205,15 +206,19 @@ public class EmpresaBusiness {
 	public DocEmpresa renombrarRolPadre(DocEmpresa pDocEmpresa, List<RolPadreRequest> pRolPadre)
 			throws MigradorException {
 		try {
-			if (pRolPadre != null && pDocEmpresa.getlRolPadre().size() == pRolPadre.size()) {
-				for (int i = 0; i < pDocEmpresa.getlRolPadre().size(); i++) {
-					pDocEmpresa.getlRolPadre().get(i).setNombre(pRolPadre.get(i).getMnemonicoDestino());
-					pDocEmpresa.getlRolPadre().get(i).setMnemonico(pRolPadre.get(i).getMnemonicoDestino());
-
+			if (pRolPadre != null) {
+				for (RolPadreRequest iRolPadreReq : pRolPadre) {
+					for (RolPadre iRolPadre : pDocEmpresa.getlRolPadre()) {
+						if (iRolPadre.getMnemonico().equals(iRolPadreReq.getMnemonicoOrigen())) {
+							iRolPadre.setNombre(iRolPadreReq.getMnemonicoDestino());
+							iRolPadre.setMnemonico(iRolPadreReq.getMnemonicoDestino());
+							break;
+						}
+					}
 					for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
 						if (iUsuario.getRolMnemonico() != null
-								&& iUsuario.getRolMnemonico().equals(pRolPadre.get(i).getMnemonicoOrigen())) {
-							iUsuario.setRolMnemonico(pRolPadre.get(i).getMnemonicoDestino());
+								&& iUsuario.getRolMnemonico().equals(iRolPadreReq.getMnemonicoOrigen())) {
+							iUsuario.setRolMnemonico(iRolPadreReq.getMnemonicoDestino());
 						}
 					}
 				}
