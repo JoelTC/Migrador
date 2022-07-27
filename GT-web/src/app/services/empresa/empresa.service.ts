@@ -21,7 +21,7 @@ export class EmpresaService {
   }
 
   filtrarAplicacion(lAplicacionDTO: AplicacionDTO[]) {
-    return this.http.post<DocEmpresa>(this.url + 'filtrarAplicacion', lAplicacionDTO);
+    return this.http.post<any>(this.url + 'filtrarAplicacion', lAplicacionDTO);
   }
 
   listarCifrado() {

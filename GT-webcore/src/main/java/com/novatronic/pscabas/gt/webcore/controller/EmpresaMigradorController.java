@@ -47,7 +47,7 @@ public class EmpresaMigradorController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "filtrarAplicacion", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Response<DocEmpresa> filtrarAplicacion(@RequestBody List<AplicacionDTO> pAplicacion)
+	public Response<byte[]> filtrarAplicacion(@RequestBody List<AplicacionDTO> pAplicacion)
 			throws MigradorException {
 		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK",
 				empresaMigradorService.filtrarAplicacion(pAplicacion));

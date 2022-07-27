@@ -1,6 +1,7 @@
 package com.novatronic.pscabas.gt.webcore.business;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -452,7 +453,7 @@ public class EmpresaBusiness {
 
 	}
 
-	public void gestionarArchivos(DocEmpresa pDocEmpresa) throws MigradorException {
+	public byte[] gestionarArchivos(DocEmpresa pDocEmpresa) throws MigradorException {
 		try {
 			// Se elimina el archivo de respaldo para guardad el final
 			if (FileServiceImpl.archivo.exists()) {
@@ -465,10 +466,12 @@ public class EmpresaBusiness {
 
 			FileServiceImpl.archivo = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);
 			serializer.write(pDocEmpresa, FileServiceImpl.archivo);
-			System.out.println("Archivo guardado");
+			byte[] fileContent = Files.readAllBytes(FileServiceImpl.archivo.toPath());
+			return fileContent;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			return null;
 		}
 	}
 }

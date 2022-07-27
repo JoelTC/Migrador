@@ -68,17 +68,15 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public DocEmpresa filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException {
+	public byte[] filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
 			oDocEmpresa = business.filtrarAplicacion(oDocEmpresa, pAplicacion);
 
-			business.gestionarArchivos(oDocEmpresa);
-
-			return oDocEmpresa;
-
+			return business.gestionarArchivos(oDocEmpresa);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
