@@ -11,7 +11,18 @@
 
 <div class="gt-bg-content">
     <div class="container">
-        <app-file-upload></app-file-upload>
+        <div class="border">
+            <app-file-upload></app-file-upload>
+            <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+                <div class="col-md-2">
+                    <label class="text">Ruta destino: </label>
+                </div>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="path" [(ngModel)]="txtPath"
+                        placeholder="Ingrese ruta destino" style="height: 35px; padding: 5px;" />
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
             <div class="col-md-2" style="width: 200px;">
                 <button class="gt-btn-silver btn" type="button" (click)="listarRolPadre()">Listar

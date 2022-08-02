@@ -15,6 +15,7 @@ export class CifradoComponent implements OnInit {
   //Variables auxiliares para gestionar los eventos
   selectedCifradoO: string;
   selectedCifradoD: string;
+  txtPath:string;
   tipMensaje1: string;
   tipMensaje2: string;
 
@@ -46,7 +47,7 @@ export class CifradoComponent implements OnInit {
   }
 
   async listarCifrado() {
-    this.file.upload();
+    this.file.upload(this.txtPath);
     await this.delay(300);
 
     this.serviceEmpresa.listarCifrado().subscribe({

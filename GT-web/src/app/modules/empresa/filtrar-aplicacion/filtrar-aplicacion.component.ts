@@ -12,6 +12,7 @@ import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file
 export class FiltrarAplicacionComponent implements OnInit {
   aplicacionDTO: AplicacionDTO[] = [];
   selectedAplicacion: AplicacionDTO[] = [];
+  txtPath:string;
 
   file = new FileUploadComponent(this.serviceFile);
 
@@ -33,7 +34,7 @@ export class FiltrarAplicacionComponent implements OnInit {
   }
 
   async listarAplicacion() {
-    this.file.upload();
+    this.file.upload(this.txtPath);
     await this.delay(300);
     this.serviceEmpresa.listarAplicacion().subscribe({
       next: (result: any) => {

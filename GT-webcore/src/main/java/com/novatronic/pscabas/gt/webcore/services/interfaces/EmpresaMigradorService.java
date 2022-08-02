@@ -16,7 +16,7 @@ public interface EmpresaMigradorService {
 
 	public List<AplicacionDTO> listarAplicacion() throws MigradorException;
 
-	public byte[] filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException;
+	public DocEmpresa filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException;
 
 	public String listarCifrado() throws MigradorException;
 

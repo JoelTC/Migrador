@@ -1,0 +1,56 @@
+<div class="container" style="margin-bottom: 30px;">
+    <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+        <div class="col-md-6">
+            <div class="form-group row" style="padding: 20px;">
+                <label class="col-md-12 text">Base de datos </label>
+                <div class="col-md-12">
+                    <mat-select placeholder="Seleccionar base de datos" name="bd" class="form-control" [(ngModel)]="selectedBD">
+                        <mat-option [value]="'oracle'">Oracle</mat-option>
+                        <mat-option [value]="'oracle'">Postgres</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row" style="padding: 20px;">
+                <label class="col-md-12 text">Cadena de conexión: </label>
+                <div class="col-md-12">
+                    <input class="form-control" type="text" name="cadena" placeholder="Ingrese cadena de conexion"
+                        [(ngModel)]="txtCadena" style="height: 35px; padding: 5px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
+        <div class="col-md-6">
+            <div class="form-group row" style="padding: 20px;">
+                <label class="col-md-12 text">Usuario: </label>
+                <div class="col-md-12">
+                    <input class="form-control" type="text" name="usuario" [(ngModel)]="txtUsuario" placeholder="Ingrese usuario"
+                        style="height: 35px; padding: 5px;" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row" style="padding: 20px;">
+                <label class="col-md-12 text">Contraseña: </label>
+                <div class="col-md-12">
+                    <input class="form-control" type="password" name="pass" [(ngModel)]="txtPass" placeholder="Ingrese contraseña"
+                        style="height: 35px; padding: 5px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 20px;">
+        <div class="col-auto text-center">
+            <button class="gt-btn-operacion" (click)="conexionPrueba()" type="button"> Conectar</button>
+        </div>
+    </div>
+
+    <div *ngIf="load" class="row justify-content-center align-items-center" style="margin-top: 20px">
+        <img class="col-auto" src="{{check}}" style="width: 50px;">
+        <div class="col-auto">
+            <label style="font-size: 16px">Conexión exitosa</label>
+        </div>
+    </div>

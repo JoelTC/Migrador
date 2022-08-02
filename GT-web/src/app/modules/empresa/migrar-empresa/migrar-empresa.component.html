@@ -14,24 +14,52 @@
       <ng-template matStepLabel>Importar template</ng-template>
       <app-empresa-importar-template></app-empresa-importar-template>
 
-      <!--<div class="m-0 row justify-content-center">
-        <div class="col-auto text-center">
-          <button class="gt-btn-primary btn" (click)="goBack(stepper)" type="button">Back</button>
-          <button class="gt-btn-operacion" style="margin-top: 30px;" (click)="siguiente(stepper, 1)" type="button">Iniciar</button>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-md-1" style="margin-right: 20px;">
+            <button class="gt-btn-primary btn" (click)="siguiente(stepper)" type="button">Siguiente</button>
+          </div>
         </div>
-      </div>-->
+      </div>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Filtrar aplicaciones </ng-template>
       <app-empresa-filtrar-aplicacion></app-empresa-filtrar-aplicacion>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-1">
+            <button class="gt-btn-primary btn" (click)="anterior(stepper)" type="button">Anterior</button>
+          </div>
+          <div class="col-md-1" style="margin-right: 20px;">
+            <button class="gt-btn-primary btn" (click)="siguiente(stepper)" type="button">Siguiente</button>
+          </div>
+        </div>
+      </div>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Cifrado de contraseña</ng-template>
       <app-empresa-cifrado></app-empresa-cifrado>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-1">
+            <button class="gt-btn-primary btn" (click)="anterior(stepper)" type="button">Anterior</button>
+          </div>
+          <div class="col-md-1" style="margin-right: 20px;">
+            <button class="gt-btn-primary btn" (click)="siguiente(stepper)" type="button">Siguiente</button>
+          </div>
+        </div>
+      </div>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Rol agrupador</ng-template>
       <app-empresa-rol-agrupador></app-empresa-rol-agrupador>
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-md-1">
+            <button class="gt-btn-primary btn" (click)="anterior(stepper)" type="button">Anterior</button>
+          </div>
+        </div>
+      </div>
     </mat-step>
 
   </mat-horizontal-stepper>

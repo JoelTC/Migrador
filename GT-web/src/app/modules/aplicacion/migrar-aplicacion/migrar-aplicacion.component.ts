@@ -12,6 +12,7 @@ export class MigrarAplicacionComponent implements OnInit {
   selectedTipo: string;
   selectedVersionO: string;
   selectedVersionD: string;
+  txtPath: string;
 
   file: FileUploadComponent = new FileUploadComponent(this.serviceFile);
 
@@ -25,7 +26,7 @@ export class MigrarAplicacionComponent implements OnInit {
   }
 
   async migrarAplicacion() {
-    this.file.upload();
+    this.file.upload(this.txtPath);
     await this.delay(300);
     this.serviceAplicacion.migrarAplicacion(this.selectedVersionO, this.selectedTipo).subscribe({
       next: (result: any) => {

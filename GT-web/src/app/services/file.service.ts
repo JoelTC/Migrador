@@ -10,14 +10,18 @@ export class FileService {
     this.url = 'http://localhost:8080/gt-webcore/api/v1/file/';
   }
 
-  uploadFile(file: File) {
-    let formData: FormData = new FormData();
+  uploadFile(file: File, path: string) {
+    let formData:FormData = new FormData();
     formData.append('files', file, file.name);
 
     let headers = new HttpHeaders();
     /** In Angular 5, including the header Content-Type can invalidate your request */
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    return this.http.post<string>(this.url + 'upload', formData, { headers: headers });
+
+    let params = new HttpParams()
+    .set('path', path);
+
+    return this.http.post<string>(this.url + 'upload',  formData,  { headers: headers, params: params});
   }
 }

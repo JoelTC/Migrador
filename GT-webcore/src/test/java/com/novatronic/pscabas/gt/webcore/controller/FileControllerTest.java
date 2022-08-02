@@ -23,7 +23,7 @@ public class FileControllerTest {
 	private static final String SUCCESS_CODE = "200 OK";
 	private static final String SUCCESS_MESSAGE = "OK";
 	private static final String ESTREG = "Los archivos fueron cargados correctamente al servidor";
-
+	private static final String RUTA = "C:\\Users\\jtrujillo\\Desktop\\templates";
 	@Mock
 	FileService service;
 
@@ -33,12 +33,12 @@ public class FileControllerTest {
 	@Before
 	public void init() throws MigradorException, IOException {
 		MockitoAnnotations.initMocks(this);
-		Mockito.when(service.save(multipartFile)).thenReturn(ESTREG);
+		Mockito.when(service.save(multipartFile, RUTA)).thenReturn(ESTREG);
 	}
 
 	@Test
 	public void uploadFiles() throws MigradorException {
-		final Response<String> response = controller.uploadFiles(multipartFile);
+		final Response<String> response = controller.uploadFiles(multipartFile, RUTA);
 
 		assertEquals(response.getStatuts(), SUCCESS_STATUS);
 		assertEquals(response.getCode(), SUCCESS_CODE);

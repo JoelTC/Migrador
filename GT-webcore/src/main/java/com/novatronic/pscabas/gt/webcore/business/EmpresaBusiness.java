@@ -1,7 +1,6 @@
 package com.novatronic.pscabas.gt.webcore.business;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +10,7 @@ import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.stream.Format;
 
 import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionUsuario;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Aplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Permiso;
@@ -29,8 +29,8 @@ public class EmpresaBusiness {
 	private Serializer serializer;
 	private Format formato;
 
-	public DocEmpresa convertirVersion21(DocEmpresa pDocEmpresa, MigradorEmpresaRequest pMigradorEmpresa)
-			throws MigradorException {
+	public DocEmpresa convertirVersion21(DocEmpresa pDocEmpresa, MigradorEmpresaRequest pMigradorEmpresa,
+			List<AplicacionUsuario> plAplicacionUsuario) throws MigradorException {
 		try {
 			for (Aplicacion iAplicacion : pDocEmpresa.getlAplicacion()) {
 				if (iAplicacion.getlRol() != null) {
@@ -40,7 +40,7 @@ public class EmpresaBusiness {
 				}
 			}
 
-			return convertirVersion23(pDocEmpresa, pMigradorEmpresa);
+			return convertirVersion23(pDocEmpresa, pMigradorEmpresa, plAplicacionUsuario);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,8 +49,8 @@ public class EmpresaBusiness {
 		}
 	}
 
-	public DocEmpresa convertirVersion23(DocEmpresa pDocEmpresa, MigradorEmpresaRequest pMigradorEmpresa)
-			throws MigradorException {
+	public DocEmpresa convertirVersion23(DocEmpresa pDocEmpresa, MigradorEmpresaRequest pMigradorEmpresa,
+			List<AplicacionUsuario> plAplicacionUsuario) throws MigradorException {
 		try {
 			for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
 				if (iUsuario.getFechaNacimiento() == null || iUsuario.getFechaNacimiento().equals("")) {
@@ -70,7 +70,10 @@ public class EmpresaBusiness {
 					}
 				}
 			}
-			pDocEmpresa = filtrarRolUsuario(pDocEmpresa, pMigradorEmpresa.getTipo());// agregarRolPadre(pDocEmpresa,
+
+			pDocEmpresa = agregarAplicacionUsuario(pDocEmpresa, plAplicacionUsuario);
+
+			pDocEmpresa = filtrarUsuarioRol(pDocEmpresa, pMigradorEmpresa.getTipo());// agregarRolPadre(pDocEmpresa,
 																						// pTipo);
 
 			// Funciones extras
@@ -236,14 +239,47 @@ public class EmpresaBusiness {
 		}
 	}
 
-	private DocEmpresa filtrarRolUsuario(DocEmpresa pDocEmpresa, String pTipo) throws MigradorException {
-		try {
-			for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
-				if (iUsuario.getlUsuarioRol() != null) {
-					Collections.sort(iUsuario.getlUsuarioRol(),
-							(x, y) -> x.getmnemonico().compareToIgnoreCase(y.getmnemonico()));
+	private DocEmpresa agregarAplicacionUsuario(DocEmpresa pDocEmpresa, List<AplicacionUsuario> plAplicacionUsuario)
+			throws MigradorException {
+
+		Collections.sort(pDocEmpresa.getlUsuario(), (x, y) -> x.getUsuario().compareToIgnoreCase(y.getUsuario()));
+		for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
+			if (iUsuario.getlUsuarioRol() != null) {
+				Collections.sort(iUsuario.getlUsuarioRol(),
+						(x, y) -> x.getMnemonico().compareToIgnoreCase(y.getMnemonico()));
+			}
+		}
+
+		for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
+			if (iUsuario.getlUsuarioRol() != null) {
+				List<AplicacionUsuario> lAplicionUsuario = new ArrayList<AplicacionUsuario>();
+				for (AplicacionUsuario iAplicacionUsuario : plAplicacionUsuario) {
+					if (iUsuario.getUsuario().equals(iAplicacionUsuario.getUsuario())) {
+						lAplicionUsuario.add(iAplicacionUsuario);
+					}
+				}
+
+				if (iUsuario.getlUsuarioRol().size() == lAplicionUsuario.size()) {
+					for (UsuarioRol iUsuarioRol : iUsuario.getlUsuarioRol()) {
+						int i = 0;
+						for (AplicacionUsuario iAplicacionUsuario : lAplicionUsuario) {
+							if (iUsuarioRol.getMnemonico().equals(iAplicacionUsuario.getRol())) {
+								iUsuarioRol.setAplicacion(iAplicacionUsuario.getAplicacion());
+								lAplicionUsuario.remove(i);
+								break;
+							}
+							i++;
+						}
+					}
 				}
 			}
+		}
+
+		return pDocEmpresa;
+	}
+
+	private DocEmpresa filtrarUsuarioRol(DocEmpresa pDocEmpresa, String pTipo) throws MigradorException {
+		try {
 
 			for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
 				List<UsuarioRol> lUsuarioRol = new ArrayList<UsuarioRol>();
@@ -305,9 +341,9 @@ public class EmpresaBusiness {
 
 							for (UsuarioRol iUsuarioRol : iUsuario.getlUsuarioRol()) {
 								RolPorRol oRolPorRol = new RolPorRol();
-
 								oRolPorRol.setNombre(iUsuarioRol.getNombre());
-								oRolPorRol.setMnemonico(iUsuarioRol.getmnemonico());
+								oRolPorRol.setMnemonico(iUsuarioRol.getMnemonico());
+								oRolPorRol.setMnemonicoaplicacion(iUsuarioRol.getAplicacion());
 								lRolPorRol.add(oRolPorRol);
 							}
 
@@ -327,7 +363,8 @@ public class EmpresaBusiness {
 							RolPorRol oRolPorRol = new RolPorRol();
 
 							oRolPorRol.setNombre(iUsuarioRol.getNombre());
-							oRolPorRol.setMnemonico(iUsuarioRol.getmnemonico());
+							oRolPorRol.setMnemonico(iUsuarioRol.getMnemonico());
+							oRolPorRol.setMnemonicoaplicacion(iUsuarioRol.getAplicacion());
 							lRolPorRol.add(oRolPorRol);
 						}
 						oRolPadre.setNombre("RolAgrupador_" + i);
@@ -361,51 +398,14 @@ public class EmpresaBusiness {
 					for (RolPadre iRolPadre : pDocEmpresa.getlRolPadre()) {
 						if (iUsuario.getlUsuarioRol().toString().equals(iRolPadre.getlRolPorRol().toString())) {
 							iUsuario.setRolMnemonico(iRolPadre.getMnemonico());
+							break;
 						}
 					}
 					iUsuario.setlUsuarioRol(null);
 				}
 			}
-			return agregarMnemonicoAplicacion(pDocEmpresa);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.print(e);
-			return null;
-		}
-	}
-
-	private DocEmpresa agregarMnemonicoAplicacion(DocEmpresa pDocEmpresa) throws MigradorException {
-		try {
-			for (RolPadre iRolPadre : pDocEmpresa.getlRolPadre()) {
-				List<RolPorRol> lRolPorRol = new ArrayList<RolPorRol>();
-				for (RolPorRol iRolPorRol : iRolPadre.getlRolPorRol()) {
-					// System.out.println("RolPorRol: " + iRolPorRol.getMnemonico());
-					List<String> lAplicaciones = new ArrayList<String>();
-					for (Aplicacion iAplicacion : pDocEmpresa.getlAplicacion()) {
-						if (iAplicacion.getlRol() != null) {
-							for (Rol iRol : iAplicacion.getlRol()) {
-								if (iRolPorRol.getMnemonico().toString().equals(iRol.getMnemonico().toString())) {
-									lAplicaciones.add(iAplicacion.getMnemonico());
-								}
-							}
-						}
-
-					}
-					for (String iAplicaciones : lAplicaciones) {
-						RolPorRol oRolPorRol = new RolPorRol();
-
-						oRolPorRol.setNombre(iRolPorRol.getNombre());
-						oRolPorRol.setMnemonico(iRolPorRol.getMnemonico());
-						oRolPorRol.setMnemonicoaplicacion(iAplicaciones);
-
-						lRolPorRol.add(oRolPorRol);
-					}
-				}
-				iRolPadre.setlRolPorRol(null);
-				iRolPadre.setlRolPorRol(lRolPorRol);
-			}
 			return pDocEmpresa;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
@@ -453,7 +453,7 @@ public class EmpresaBusiness {
 
 	}
 
-	public byte[] gestionarArchivos(DocEmpresa pDocEmpresa) throws MigradorException {
+	public void gestionarArchivos(DocEmpresa pDocEmpresa) throws MigradorException {
 		try {
 			// Se elimina el archivo de respaldo para guardad el final
 			if (FileServiceImpl.archivo.exists()) {
@@ -466,12 +466,13 @@ public class EmpresaBusiness {
 
 			FileServiceImpl.archivo = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);
 			serializer.write(pDocEmpresa, FileServiceImpl.archivo);
-			byte[] fileContent = Files.readAllBytes(FileServiceImpl.archivo.toPath());
-			return fileContent;
+			System.out.println("Archivo guardado");
+			// byte[] fileContent = Files.readAllBytes(FileServiceImpl.archivo.toPath());
+			// return fileContent;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
-			return null;
+			// return null;
 		}
 	}
 }

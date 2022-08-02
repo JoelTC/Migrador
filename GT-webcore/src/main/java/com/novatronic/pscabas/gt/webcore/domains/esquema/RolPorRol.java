@@ -4,8 +4,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(name = "ROLPORROL")
-public class RolPorRol{
-	
+public class RolPorRol {
+
 	@Attribute(name = "nombre", required = false)
 	private String nombre;
 
@@ -41,6 +41,6 @@ public class RolPorRol{
 
 	@Override
 	public String toString() {
-		return nombre + " - " + mnemonico;
+		return nombre + " - " + mnemonico + " - " + mnemonicoaplicacion;
 	}
 }

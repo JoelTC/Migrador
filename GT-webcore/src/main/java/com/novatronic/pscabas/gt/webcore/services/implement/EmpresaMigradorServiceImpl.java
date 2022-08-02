@@ -4,21 +4,27 @@ import java.util.List;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.novatronic.pscabas.gt.webcore.business.EmpresaBusiness;
 import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionDTO;
+import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionUsuario;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocEmpresa;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
 import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.repositories.interfaces.AplicacionUsuarioRepository;
 import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
 
 @Service
 public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 
+	@Autowired
+	private AplicacionUsuarioRepository repository;
+	
 	private Serializer serializer = new Persister();;
 	private EmpresaBusiness business = new EmpresaBusiness();
 
@@ -29,17 +35,19 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 			// Deserializa el archivo y lo conviete en el objeto empresa
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
+			List<AplicacionUsuario> lAplicacionUsuario = listarAplicacionUsuario(oDocEmpresa.getMnemonico());
+			
 			switch (pMigradorEmpresa.getVersion()) {
 			case "2.1":
-				oDocEmpresa = business.convertirVersion21(oDocEmpresa, pMigradorEmpresa);
+				oDocEmpresa = business.convertirVersion21(oDocEmpresa, pMigradorEmpresa, lAplicacionUsuario);
 				break;
 
 			case "2.3":
-				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa);
+				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa, lAplicacionUsuario);
 				break;
 
 			default:
-				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa);
+				oDocEmpresa = business.convertirVersion23(oDocEmpresa, pMigradorEmpresa, lAplicacionUsuario);
 			}
 
 			business.gestionarArchivos(oDocEmpresa);
@@ -68,15 +76,16 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 	}
 
 	@Override
-	public byte[] filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException {
+	public DocEmpresa filtrarAplicacion(List<AplicacionDTO> pAplicacion) throws MigradorException {
 		try {
 			// Deserializa el archivo y lo conviete en el objeto aplicacion
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
 			oDocEmpresa = business.filtrarAplicacion(oDocEmpresa, pAplicacion);
 
-			return business.gestionarArchivos(oDocEmpresa);
+			business.gestionarArchivos(oDocEmpresa);
 			
+			return oDocEmpresa;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
@@ -152,5 +161,10 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 			System.out.print(e);
 			return null;
 		}
+	}
+
+	
+	private List<AplicacionUsuario> listarAplicacionUsuario(String empresa) {
+		return this.repository.listarAplicacionUsuario(ConexionBDServiceImpl.conexionBD, empresa);
 	}
 }

@@ -15,6 +15,8 @@ import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file
 export class RolAgrupadorComponent implements OnInit {
   lRolPadre: RolPadre[] = [];
   selectedRolPadre: string;
+txtPath:string;
+
   lRol: RolPorRol[];
   mnemonicoDestino: string;
   lRolPadreReq: RolPadreRequest[] = [];
@@ -27,7 +29,7 @@ export class RolAgrupadorComponent implements OnInit {
   }
 
   async listarRolPadre() {
-    this.file.upload();
+    this.file.upload(this.txtPath);
     await this.delay(300);
     this.serviceEmpresa.listarRolPadre().subscribe({
       next: (result: any) => {

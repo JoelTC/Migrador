@@ -31,13 +31,12 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
-  upload() {
-    this.serviceFile.uploadFile(FileUploadComponent.file![0]).subscribe({
+  upload(path:string) {
+    this.serviceFile.uploadFile(FileUploadComponent.file![0], path).subscribe({
       next: (result: any) => {
         console.log("Mensaje: ", result);
       },
       error: (error) => { "Error: " + console.log(error) }
     })
   }
-
 }

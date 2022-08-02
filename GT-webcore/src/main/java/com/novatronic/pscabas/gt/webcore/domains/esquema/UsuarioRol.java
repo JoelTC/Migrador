@@ -12,6 +12,9 @@ public class UsuarioRol {
 	@Attribute(name = "mnemonico", required = false)
 	private String mnemonico;
 
+	@Attribute(name = "aplicacion", required = false)
+	private String aplicacion;
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -20,16 +23,25 @@ public class UsuarioRol {
 		this.nombre = nombre;
 	}
 
-	public String getmnemonico() {
+	public String getMnemonico() {
 		return mnemonico;
 	}
 
-	public void setmnemonico(String mnemonico) {
+	public void setMnemonico(String mnemonico) {
 		this.mnemonico = mnemonico;
+	}
+
+	public String getAplicacion() {
+		return aplicacion;
+	}
+
+	public void setAplicacion(String aplicacion) {
+		this.aplicacion = aplicacion;
 	}
 
 	@Override
 	public String toString() {
-		return nombre + " - " + mnemonico;
+		return nombre + " - " + mnemonico + " - " + aplicacion;
 	}
+	
 }

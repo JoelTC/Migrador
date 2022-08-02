@@ -24,9 +24,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FileUploadComponent } from './componentes/file-upload/file-upload.component';
+import { ConnectionBDComponent } from './componentes/connection-bd/connection-bd.component';
 
 @NgModule({
-  declarations: [FileUploadComponent],
+  declarations: [FileUploadComponent, ConnectionBDComponent],
   imports: [
     CommonModule,
     MatToolbarModule,

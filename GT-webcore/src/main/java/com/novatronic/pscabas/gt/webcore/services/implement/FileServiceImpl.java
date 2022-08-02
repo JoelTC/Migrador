@@ -44,9 +44,9 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public String save(MultipartFile pFile) throws MigradorException {
+	public String save(MultipartFile pFile, String pPath) throws MigradorException {
 		try {
-			rutaFolder = Paths.get(ruta);
+			rutaFolder = Paths.get(pPath);
 			nombreArchivo = manejoNombre(pFile.getOriginalFilename(), 0);
 			archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 

@@ -23,21 +23,12 @@ export class MigrarEmpresaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*goBack(stepper: MatStepper) {
+  anterior(stepper: MatStepper) {
     stepper.previous();
   }
 
-  siguiente(stepper: MatStepper, indice: number) {
-    switch (indice) {
-      case 1: {
-        this.template.iniciar();
-        break;
-      }
-      case 2: {
-        this.filtro.filtrarAplicacion();
-        break;
-      }
-    }
-  }*/
+  siguiente(stepper: MatStepper) {
+    stepper.next();
+  }
 
 }

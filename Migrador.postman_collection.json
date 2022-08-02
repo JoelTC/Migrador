@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"version\": \"2.3\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": \"0\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
+							"raw": "{\r\n    \"version\": \"2.1\",\r\n    \"rolPadre\": null,\r\n    \"tipo\": \"OPCION\",\r\n    \"lAplicacion\": [],\r\n    \"fechaNacimiento\": \"01/01/2000\",\r\n    \"cifradoOrigen\": \"0\",\r\n    \"cifradoDestino\": \"1\",\r\n    \"contrasena\": \"6F85FE7C028DC97789ED443CDF37A762\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -281,13 +281,12 @@
 						{
 							"key": "files",
 							"type": "file",
-							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/templateEMPRESA 3.0.xml"
+							"src": "/C:/Users/jtrujillo/Desktop/templates/templates/Template-empresa 2.1.xml"
 						},
 						{
 							"key": "path",
 							"value": "C:\\Users\\jtrujillo\\Desktop\\templates\\templates",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "",
@@ -309,6 +308,40 @@
 						"v1",
 						"file",
 						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PruebaBD",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\":\"jdbc:oracle:thin:@172.29.43.133:1521:rh61prod\",\r\n    \"usuario\":\"scapcipr\",\r\n    \"contrasena\": \"scapcipr\",\r\n    \"baseDatos\": \"oracle\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/gt-webcore/api/v1/bd/conexion",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gt-webcore",
+						"api",
+						"v1",
+						"bd",
+						"conexion"
 					]
 				}
 			},
