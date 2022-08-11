@@ -5,6 +5,7 @@ import { RolPadreRequest } from 'src/app/models/request/RolPadreRequest';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
 import { FileService } from 'src/app/services/file.service';
 import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file-upload.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-empresa-rol-agrupador',
@@ -19,7 +20,7 @@ export class EmpresaRolAgrupadorComponent implements OnInit {
   mnemonicoDestino: string;
   lRolPadreReq: RolPadreRequest[] = [];
 
-  constructor(private serviceEmpresa: EmpresaService) { }
+  constructor(private serviceEmpresa: EmpresaService, private serviceFile: FileService) { }
 
   ngOnInit(): void {
   }
@@ -73,7 +74,24 @@ export class EmpresaRolAgrupadorComponent implements OnInit {
   renombrarRolPadre() {
     this.serviceEmpresa.renombrarRolPadre(this.lRolPadreReq).subscribe({
       next: (result: any) => {
-        console.log(result.data);
+        //console.log(result.data);
+        if(result.data!=null){
+          this.serviceFile.getFile(this.serviceFile.nombreArchivo);
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: 'Renombrado exitoso'
+          })
+        }
       },
       error: (error) => { 'Error: ' + console.log(error) }
     })

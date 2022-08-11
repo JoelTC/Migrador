@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileService } from 'src/app/services/file.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-file-upload',
@@ -31,12 +32,31 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
-  upload(path:string) {
-    this.serviceFile.uploadFile(FileUploadComponent.file![0], path).subscribe({
+  upload() {
+    this.serviceFile.uploadFile(FileUploadComponent.file![0]).subscribe({
       next: (result: any) => {
-        console.log("Mensaje: ", result);
+        if (result.data != null) {
+          this.updateFile(result.data);
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: 'Template ingresado'
+          })
+        }
       },
       error: (error) => { "Error: " + console.log(error) }
     })
+  }
+
+  private updateFile(nombreArchivo: string) {
+    this.serviceFile.nombreArchivo = nombreArchivo;
   }
 }

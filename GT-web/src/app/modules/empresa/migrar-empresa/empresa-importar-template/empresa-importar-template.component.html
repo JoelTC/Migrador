@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-3">
                 <mat-select placeholder="Seleccionar versión" [(ngModel)]="selectedVersionO" name="versionO"
-                    class="form-control" (valueChange)="openDialog()">
+                    class="form-control" (ngModelChange)="openDialog()">
                     <mat-option [value]="'2.1'">2.1</mat-option>
                     <mat-option [value]="'2.3'">2.3</mat-option>
                 </mat-select>
@@ -36,19 +36,8 @@
         </div>
     </form>
 
+    <app-file-upload></app-file-upload>
 
-    <div class="border">
-        <app-file-upload></app-file-upload>
-        <div class="row justify-content-center align-items-center" style="margin-top: 20px;">
-            <div class="col-md-2">
-                <label class="text">Ruta destino: </label>
-            </div>
-            <div class="col-md-10">
-                <input class="form-control" type="text" name="path" [(ngModel)]="txtPath"
-                    placeholder="Ingrese ruta destino" style="height: 35px; padding: 5px;" />
-            </div>
-        </div>
-    </div>
     <div class="row justify-content-center" style="margin-top: 20px;">
         <div class="col-auto text-center">
             <button class="gt-btn-operacion" type="button" (click)="iniciar()">Iniciar</button>

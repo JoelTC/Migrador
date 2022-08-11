@@ -15,7 +15,7 @@ import com.novatronic.pscabas.gt.webcore.services.implement.FileServiceImpl;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 public class AplicacionBusiness {
-
+	
 	private Serializer serializer;
 	private Format formato;
 

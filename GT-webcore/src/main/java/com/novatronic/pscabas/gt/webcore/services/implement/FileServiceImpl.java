@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.FileService;
+import com.novatronic.pscabas.gt.webcore.services.FileService;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 @Service
@@ -44,15 +44,15 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public String save(MultipartFile pFile, String pPath) throws MigradorException {
+	public String save(MultipartFile pFile) throws MigradorException {
 		try {
-			rutaFolder = Paths.get(pPath);
+			rutaFolder = Paths.get(ruta);
 			nombreArchivo = manejoNombre(pFile.getOriginalFilename(), 0);
 			archivo = new File(rutaFolder.toAbsolutePath() + "\\" + nombreArchivo);
 
 			if (!archivo.exists()) {
 				Files.copy(pFile.getInputStream(), rutaFolder.resolve(nombreArchivo));
-				return "Los archivos fueron cargados correctamente al servidor";
+				return nombreArchivo;
 			} else {
 				boolean f = true;
 				int i = 1;
@@ -63,7 +63,7 @@ public class FileServiceImpl implements FileService {
 					if (!archivo.exists()) {
 						Files.copy(pFile.getInputStream(), rutaFolder.resolve(nombreArchivo));
 						f = false;
-						return "Los archivos fueron cargados correctamente al servidor";
+						return nombreArchivo;
 					}
 					i++;
 				}

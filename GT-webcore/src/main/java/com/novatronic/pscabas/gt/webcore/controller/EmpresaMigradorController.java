@@ -20,7 +20,7 @@ import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.EmpresaMigradorService;
+import com.novatronic.pscabas.gt.webcore.services.EmpresaMigradorService;
 
 @RestController
 @CrossOrigin(origins = "*")

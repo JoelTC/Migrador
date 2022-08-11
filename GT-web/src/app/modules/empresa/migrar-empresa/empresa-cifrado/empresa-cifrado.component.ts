@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CifradoRequest } from 'src/app/models/request/CifradoRequest';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
-import { GlobalVariableService } from 'src/app/shared/servicio/global-variable.service';
+import { FileService } from 'src/app/services/file.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-empresa-cifrado',
@@ -18,7 +19,7 @@ export class EmpresaCifradoComponent implements OnInit {
   tipMensaje1: string;
   tipMensaje2: string;
 
-  constructor(private serviceEmpresa: EmpresaService, private serviceGlobal: GlobalVariableService) {
+  constructor(private serviceEmpresa: EmpresaService, private serviceFile: FileService) {
     this.selectedCifradoO = "";
     this.selectedCifradoD = "";
     this.tipMensaje1 = "El cambio de contraseña se hará en la secuencia de cifrado hardware → software"
@@ -34,9 +35,25 @@ export class EmpresaCifradoComponent implements OnInit {
   }
 
   migrarTemplate() {
-    this.serviceEmpresa.migrar(this.serviceGlobal.mEmpresa).subscribe({
+    this.serviceEmpresa.migrar(this.serviceFile.mEmpresa).subscribe({
       next: (result: any) => {
         console.log(result.message);
+        if(result.data!=null){
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: 'Cifrado exitoso'
+          })
+        }
       },
       error: (error) => { 'Error: ' + console.log(error) }
     })
@@ -52,8 +69,8 @@ export class EmpresaCifradoComponent implements OnInit {
   }
 
   setCifrado() {
-    this.serviceGlobal.mEmpresa.cifradoOrigen = this.selectedCifradoO;
-    this.serviceGlobal.mEmpresa.cifradoDestino = this.selectedCifradoD;
-    console.log(this.serviceGlobal.mEmpresa);
+    this.serviceFile.mEmpresa.cifradoOrigen = this.selectedCifradoO;
+    this.serviceFile.mEmpresa.cifradoDestino = this.selectedCifradoD;
+    console.log(this.serviceFile.mEmpresa);
   }
 }

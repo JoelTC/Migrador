@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.novatronic.pscabas.gt.webcore.business.AplicacionBusiness;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.AplicacionMigradorService;
+import com.novatronic.pscabas.gt.webcore.services.AplicacionMigradorService;
 
 @Service
 public class AplicacionMigradorServiceImpl implements AplicacionMigradorService {

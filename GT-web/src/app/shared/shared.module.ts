@@ -27,7 +27,7 @@ import { FileUploadComponent } from './componentes/file-upload/file-upload.compo
 import { ConnectionBDComponent } from './componentes/connection-bd/connection-bd.component';
 
 @NgModule({
-  declarations: [FileUploadComponent, ConnectionBDComponent],
+  declarations: [FileUploadComponent, ConnectionBDComponent, ],
   imports: [
     CommonModule,
     MatToolbarModule,

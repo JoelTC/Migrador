@@ -466,13 +466,10 @@ public class EmpresaBusiness {
 
 			FileServiceImpl.archivo = new File(FileServiceImpl.rutaFolder + "\\" + FileServiceImpl.nombreArchivo);
 			serializer.write(pDocEmpresa, FileServiceImpl.archivo);
-			System.out.println("Archivo guardado");
-			// byte[] fileContent = Files.readAllBytes(FileServiceImpl.archivo.toPath());
-			// return fileContent;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
-			// return null;
 		}
 	}
 }

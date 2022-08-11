@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.novatronic.pscabas.gt.webcore.config.Datasource;
 import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionUsuario;
 import com.novatronic.pscabas.gt.webcore.domains.entities.ConexionBD;
-import com.novatronic.pscabas.gt.webcore.repositories.interfaces.AplicacionUsuarioRepository;
+import com.novatronic.pscabas.gt.webcore.repositories.AplicacionUsuarioRepository;
 
 @Component
 public class AplicacionUsuarioRepositoryImpl implements AplicacionUsuarioRepository {

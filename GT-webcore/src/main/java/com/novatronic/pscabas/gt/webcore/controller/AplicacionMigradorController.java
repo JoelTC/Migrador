@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.AplicacionMigradorService;
+import com.novatronic.pscabas.gt.webcore.services.AplicacionMigradorService;
 
 @RestController
 @CrossOrigin(origins = "*")

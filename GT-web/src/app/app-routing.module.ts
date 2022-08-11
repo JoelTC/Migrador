@@ -6,6 +6,16 @@ import { MenuComponent } from './components/container/menu/menu.component';
 import { ContainerComponent } from './components/container/container.component';
 
 const routes: Routes = [
+  /*{
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/login/login.module').then((m) => m.LoginModule),
+  },*/
   {
     path: '',
     component: ContainerComponent,

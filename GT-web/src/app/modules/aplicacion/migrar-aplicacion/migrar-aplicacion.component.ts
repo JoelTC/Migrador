@@ -3,6 +3,8 @@ import { AplicacionService } from 'src/app/services/aplicacion/aplicacion.servic
 import { FileService } from 'src/app/services/file.service';
 import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file-upload.component';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-migrar-aplicacion',
   templateUrl: './migrar-aplicacion.component.html',
@@ -26,14 +28,35 @@ export class MigrarAplicacionComponent implements OnInit {
   }
 
   async migrarAplicacion() {
-    this.file.upload(this.txtPath);
+    this.file.upload();
     await this.delay(300);
     this.serviceAplicacion.migrarAplicacion(this.selectedVersionO, this.selectedTipo).subscribe({
       next: (result: any) => {
-        console.log('Doc: ', result);
+        if (result.data != null) {
+          this.save();
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: 'Migración exitosa'
+          })
+        }
       },
       error: (error) => { "Error: " + console.log(error) }
     })
+  }
+
+
+  save() {
+    this.serviceFile.getFile(this.serviceFile.nombreArchivo);
   }
 
   delay(ms: number) {

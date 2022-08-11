@@ -6,6 +6,7 @@ import { RolPadreRequest } from 'src/app/models/request/RolPadreRequest';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
 import { FileService } from 'src/app/services/file.service';
 import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file-upload.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-rol-agrupador',
@@ -15,7 +16,6 @@ import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file
 export class RolAgrupadorComponent implements OnInit {
   lRolPadre: RolPadre[] = [];
   selectedRolPadre: string;
-txtPath:string;
 
   lRol: RolPorRol[];
   mnemonicoDestino: string;
@@ -29,7 +29,7 @@ txtPath:string;
   }
 
   async listarRolPadre() {
-    this.file.upload(this.txtPath);
+    this.file.upload();
     await this.delay(300);
     this.serviceEmpresa.listarRolPadre().subscribe({
       next: (result: any) => {
@@ -79,7 +79,24 @@ txtPath:string;
   renombrarRolPadre() {
     this.serviceEmpresa.renombrarRolPadre(this.lRolPadreReq).subscribe({
       next: (result: any) => {
-        console.log(result.data);
+        //console.log(result.data);
+        if(result.data!=null){
+          this.serviceFile.getFile(this.serviceFile.nombreArchivo);
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: 'Renombrado exitoso'
+          })
+        }
       },
       error: (error) => { 'Error: ' + console.log(error) }
     })

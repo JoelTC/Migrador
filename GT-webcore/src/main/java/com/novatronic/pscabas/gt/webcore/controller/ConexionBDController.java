@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.novatronic.pscabas.gt.webcore.domains.entities.ConexionBD;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.ConexionBDService;
+import com.novatronic.pscabas.gt.webcore.services.ConexionBDService;
 
 @RestController
 @CrossOrigin(origins = "*")

@@ -3,6 +3,7 @@ import { CifradoRequest } from 'src/app/models/request/CifradoRequest';
 import { EmpresaService } from 'src/app/services/empresa/empresa.service';
 import { FileService } from 'src/app/services/file.service';
 import { FileUploadComponent } from 'src/app/shared/componentes/file-upload/file-upload.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cifrado',
@@ -15,7 +16,6 @@ export class CifradoComponent implements OnInit {
   //Variables auxiliares para gestionar los eventos
   selectedCifradoO: string;
   selectedCifradoD: string;
-  txtPath:string;
   tipMensaje1: string;
   tipMensaje2: string;
 
@@ -40,14 +40,31 @@ export class CifradoComponent implements OnInit {
     this.setCifradoRequest();
     this.serviceEmpresa.migrarCifrado(this.cifradoRequest).subscribe({
       next: (result: any) => {
-        console.log(result.data);
+        //console.log(result.data);
+        if(result.data!=null){
+          this.serviceFile.getFile(this.serviceFile.nombreArchivo);
+          Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          }).fire({
+            icon: 'success',
+            title: result.data
+          })
+        }
       },
       error: (error) => { "Error: " + console.log(error) }
     })
   }
 
   async listarCifrado() {
-    this.file.upload(this.txtPath);
+    this.file.upload();
     await this.delay(300);
 
     this.serviceEmpresa.listarCifrado().subscribe({

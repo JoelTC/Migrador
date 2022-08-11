@@ -1,4 +1,4 @@
-package com.novatronic.pscabas.gt.webcore.services.interfaces;
+package com.novatronic.pscabas.gt.webcore.services;
 
 import java.util.List;
 

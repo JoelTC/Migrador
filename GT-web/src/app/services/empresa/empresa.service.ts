@@ -11,6 +11,7 @@ import { RolPadreRequest } from 'src/app/models/request/RolPadreRequest';
   providedIn: 'root'
 })
 export class EmpresaService {
+  public mEmpresa = new MigradorEmpresaRequest;
   private url: string;
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:8080/gt-webcore/api/v1/empresa/';

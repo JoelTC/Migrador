@@ -1,23 +1,26 @@
 package com.novatronic.pscabas.gt.webcore.services.implement;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.novatronic.pscabas.gt.webcore.config.Datasource;
 import com.novatronic.pscabas.gt.webcore.domains.entities.ConexionBD;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.ConexionBDService;
+import com.novatronic.pscabas.gt.webcore.repositories.ConexionBDRepository;
+import com.novatronic.pscabas.gt.webcore.services.ConexionBDService;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 @Service
 public class ConexionBDServiceImpl implements ConexionBDService {
+	
+	@Autowired
+	private ConexionBDRepository repository;
+	
 	public static ConexionBD conexionBD;
 
 	@Override
 	public boolean conexionBD(ConexionBD conexion) throws SQLException {
 		try {
-			boolean prueba = false;
 
 			if (conexion.getBaseDatos().equals("oracle")) {
 				conexion.setDriver(Constantes.ORACLE_DRIVER);
@@ -27,14 +30,8 @@ public class ConexionBDServiceImpl implements ConexionBDService {
 
 			conexionBD = conexion;
 
-			Datasource ds = new Datasource(conexion);
-			Connection con = ds.getDataSource().getConnection();
-			if (con != null) {
-				prueba = true;
-				con.close();
-			}
-
-			return prueba;
+			return this.repository.conexionBD(conexion);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);

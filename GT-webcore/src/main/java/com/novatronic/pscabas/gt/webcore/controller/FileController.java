@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import com.novatronic.pscabas.gt.webcore.domains.entities.File;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
 import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.interfaces.FileService;
+import com.novatronic.pscabas.gt.webcore.services.FileService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -34,9 +34,9 @@ public class FileController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Response<String> uploadFiles(@RequestParam("files") MultipartFile pFiles, @RequestParam("path") String pPath)
+	public Response<String> uploadFiles(@RequestParam("files") MultipartFile pFiles)
 			throws MigradorException {
-		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", fileService.save(pFiles, pPath));
+		return new Response<>("Success", String.valueOf(HttpStatus.OK), "OK", fileService.save(pFiles));
 	}
 
 	@ResponseStatus(HttpStatus.OK)
