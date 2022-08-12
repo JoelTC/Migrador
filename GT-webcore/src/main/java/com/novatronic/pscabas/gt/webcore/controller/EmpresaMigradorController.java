@@ -19,7 +19,7 @@ import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.EmpresaMigradorService;
 
 @RestController

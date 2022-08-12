@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 
 import com.novatronic.pscabas.gt.webcore.domains.entities.File;
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.FileService;
 
 @RestController

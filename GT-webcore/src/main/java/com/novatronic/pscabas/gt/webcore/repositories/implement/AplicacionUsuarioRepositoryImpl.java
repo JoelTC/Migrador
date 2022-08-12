@@ -6,15 +6,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.novatronic.pscabas.gt.webcore.config.Datasource;
 import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionUsuario;
 import com.novatronic.pscabas.gt.webcore.domains.entities.ConexionBD;
 import com.novatronic.pscabas.gt.webcore.repositories.AplicacionUsuarioRepository;
+import com.novatronic.pscabas.gt.webcore.services.implement.AplicacionMigradorServiceImpl;
 
 @Component
 public class AplicacionUsuarioRepositoryImpl implements AplicacionUsuarioRepository {
+	protected static final Logger logger = LogManager.getLogger(AplicacionUsuarioRepositoryImpl.class);
 
 	@Override
 	public List<AplicacionUsuario> listarAplicacionUsuario(ConexionBD conexion, String empresa) {
@@ -53,6 +57,7 @@ public class AplicacionUsuarioRepositoryImpl implements AplicacionUsuarioReposit
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}

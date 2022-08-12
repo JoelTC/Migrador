@@ -13,7 +13,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.FileService;
 
 public class FileControllerTest {

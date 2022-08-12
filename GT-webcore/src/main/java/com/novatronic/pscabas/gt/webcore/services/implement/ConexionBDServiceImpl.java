@@ -2,6 +2,8 @@ package com.novatronic.pscabas.gt.webcore.services.implement;
 
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,8 @@ import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 @Service
 public class ConexionBDServiceImpl implements ConexionBDService {
-	
+	protected static final Logger logger = LogManager.getLogger(ConexionBDServiceImpl.class);
+
 	@Autowired
 	private ConexionBDRepository repository;
 	
@@ -35,6 +38,7 @@ public class ConexionBDServiceImpl implements ConexionBDService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return false;
 		}
 	}

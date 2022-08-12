@@ -1,4 +1,4 @@
-package com.novatronic.pscabas.gt.webcore.exceptios;
+package com.novatronic.pscabas.gt.webcore.exception;
 
 import java.util.ArrayList;
 import java.util.List;

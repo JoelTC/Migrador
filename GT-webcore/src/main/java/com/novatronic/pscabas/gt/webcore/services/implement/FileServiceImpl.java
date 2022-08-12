@@ -8,18 +8,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.FileService;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 @Service
 public class FileServiceImpl implements FileService {
+	
+	protected static final Logger logger = LogManager.getLogger(FileServiceImpl.class);
 
 	public static String nombreArchivo; // Variable estatica para el nombre del archivo
 	
@@ -68,11 +72,12 @@ public class FileServiceImpl implements FileService {
 					i++;
 				}
 			}
-
+			
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -87,6 +92,7 @@ public class FileServiceImpl implements FileService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}

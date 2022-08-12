@@ -3,6 +3,8 @@ package com.novatronic.pscabas.gt.webcore.repositories.implement;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.novatronic.pscabas.gt.webcore.config.Datasource;
@@ -11,6 +13,7 @@ import com.novatronic.pscabas.gt.webcore.repositories.ConexionBDRepository;
 
 @Component
 public class ConexionBDRepositoryImpl implements ConexionBDRepository {
+	protected static final Logger logger = LogManager.getLogger(ConexionBDRepositoryImpl.class);
 
 	@Override
 	public boolean conexionBD(ConexionBD conexion) throws SQLException {
@@ -27,6 +30,7 @@ public class ConexionBDRepositoryImpl implements ConexionBDRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return false;
 		}
 	}

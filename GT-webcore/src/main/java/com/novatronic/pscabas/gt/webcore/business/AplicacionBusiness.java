@@ -2,6 +2,8 @@ package com.novatronic.pscabas.gt.webcore.business;
 
 import java.io.File;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.stream.Format;
@@ -10,12 +12,14 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.Aplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Permiso;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Rol;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
+import com.novatronic.pscabas.gt.webcore.services.implement.AplicacionMigradorServiceImpl;
 import com.novatronic.pscabas.gt.webcore.services.implement.FileServiceImpl;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 public class AplicacionBusiness {
-	
+	protected static final Logger logger = LogManager.getLogger(AplicacionBusiness.class);
+
 	private Serializer serializer;
 	private Format formato;
 
@@ -33,6 +37,7 @@ public class AplicacionBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -59,6 +64,7 @@ public class AplicacionBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -78,6 +84,7 @@ public class AplicacionBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 		}
 	}
 }

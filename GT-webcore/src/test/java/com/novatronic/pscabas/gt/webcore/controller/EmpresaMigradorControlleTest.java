@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.novatronic.pscabas.gt.webcore.domains.responses.Response;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.EmpresaMigradorService;
 
 public class EmpresaMigradorControlleTest {

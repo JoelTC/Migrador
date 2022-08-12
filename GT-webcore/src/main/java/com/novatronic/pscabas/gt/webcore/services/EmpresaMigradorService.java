@@ -8,7 +8,7 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
 import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 
 public interface EmpresaMigradorService {
 

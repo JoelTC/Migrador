@@ -1,7 +1,7 @@
 package com.novatronic.pscabas.gt.webcore.services;
 
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 
 public interface AplicacionMigradorService {
 	

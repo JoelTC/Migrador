@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.stream.Format;
@@ -21,11 +23,12 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.Usuario;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.UsuarioRol;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.implement.FileServiceImpl;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
 public class EmpresaBusiness {
+	protected static final Logger logger = LogManager.getLogger(EmpresaBusiness.class);
 	private Serializer serializer;
 	private Format formato;
 
@@ -45,6 +48,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -90,6 +94,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -110,6 +115,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -184,6 +190,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -203,6 +210,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -235,47 +243,54 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
 
 	private DocEmpresa agregarAplicacionUsuario(DocEmpresa pDocEmpresa, List<AplicacionUsuario> plAplicacionUsuario)
 			throws MigradorException {
-
-		Collections.sort(pDocEmpresa.getlUsuario(), (x, y) -> x.getUsuario().compareToIgnoreCase(y.getUsuario()));
-		for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
-			if (iUsuario.getlUsuarioRol() != null) {
-				Collections.sort(iUsuario.getlUsuarioRol(),
-						(x, y) -> x.getMnemonico().compareToIgnoreCase(y.getMnemonico()));
-			}
-		}
-
-		for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
-			if (iUsuario.getlUsuarioRol() != null) {
-				List<AplicacionUsuario> lAplicionUsuario = new ArrayList<AplicacionUsuario>();
-				for (AplicacionUsuario iAplicacionUsuario : plAplicacionUsuario) {
-					if (iUsuario.getUsuario().equals(iAplicacionUsuario.getUsuario())) {
-						lAplicionUsuario.add(iAplicacionUsuario);
-					}
+		try {
+			Collections.sort(pDocEmpresa.getlUsuario(), (x, y) -> x.getUsuario().compareToIgnoreCase(y.getUsuario()));
+			for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
+				if (iUsuario.getlUsuarioRol() != null) {
+					Collections.sort(iUsuario.getlUsuarioRol(),
+							(x, y) -> x.getMnemonico().compareToIgnoreCase(y.getMnemonico()));
 				}
+			}
 
-				if (iUsuario.getlUsuarioRol().size() == lAplicionUsuario.size()) {
-					for (UsuarioRol iUsuarioRol : iUsuario.getlUsuarioRol()) {
-						int i = 0;
-						for (AplicacionUsuario iAplicacionUsuario : lAplicionUsuario) {
-							if (iUsuarioRol.getMnemonico().equals(iAplicacionUsuario.getRol())) {
-								iUsuarioRol.setAplicacion(iAplicacionUsuario.getAplicacion());
-								lAplicionUsuario.remove(i);
-								break;
+			for (Usuario iUsuario : pDocEmpresa.getlUsuario()) {
+				if (iUsuario.getlUsuarioRol() != null) {
+					List<AplicacionUsuario> lAplicionUsuario = new ArrayList<AplicacionUsuario>();
+					for (AplicacionUsuario iAplicacionUsuario : plAplicacionUsuario) {
+						if (iUsuario.getUsuario().equals(iAplicacionUsuario.getUsuario())) {
+							lAplicionUsuario.add(iAplicacionUsuario);
+						}
+					}
+
+					if (iUsuario.getlUsuarioRol().size() == lAplicionUsuario.size()) {
+						for (UsuarioRol iUsuarioRol : iUsuario.getlUsuarioRol()) {
+							int i = 0;
+							for (AplicacionUsuario iAplicacionUsuario : lAplicionUsuario) {
+								if (iUsuarioRol.getMnemonico().equals(iAplicacionUsuario.getRol())) {
+									iUsuarioRol.setAplicacion(iAplicacionUsuario.getAplicacion());
+									lAplicionUsuario.remove(i);
+									break;
+								}
+								i++;
 							}
-							i++;
 						}
 					}
 				}
 			}
-		}
 
-		return pDocEmpresa;
+			return pDocEmpresa;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			logger.error(e.getMessage(), e);
+			return null;
+		}
 	}
 
 	private DocEmpresa filtrarUsuarioRol(DocEmpresa pDocEmpresa, String pTipo) throws MigradorException {
@@ -311,6 +326,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -386,6 +402,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -409,6 +426,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -448,6 +466,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 
@@ -470,6 +489,7 @@ public class EmpresaBusiness {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 		}
 	}
 }

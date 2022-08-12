@@ -1,16 +1,19 @@
 package com.novatronic.pscabas.gt.webcore.services.implement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.springframework.stereotype.Service;
 
 import com.novatronic.pscabas.gt.webcore.business.AplicacionBusiness;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.services.AplicacionMigradorService;
 
 @Service
 public class AplicacionMigradorServiceImpl implements AplicacionMigradorService {
+	protected static final Logger logger = LogManager.getLogger(AplicacionMigradorServiceImpl.class);
 
 	private AplicacionBusiness business = new AplicacionBusiness();
 	private Serializer serializer = new Persister();;
@@ -40,6 +43,7 @@ public class AplicacionMigradorServiceImpl implements AplicacionMigradorService 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}

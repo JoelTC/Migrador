@@ -2,6 +2,8 @@ package com.novatronic.pscabas.gt.webcore.services.implement;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +17,17 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.RolPadre;
 import com.novatronic.pscabas.gt.webcore.domains.request.CifradoRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.MigradorEmpresaRequest;
 import com.novatronic.pscabas.gt.webcore.domains.request.RolPadreRequest;
-import com.novatronic.pscabas.gt.webcore.exceptios.MigradorException;
+import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
 import com.novatronic.pscabas.gt.webcore.repositories.AplicacionUsuarioRepository;
 import com.novatronic.pscabas.gt.webcore.services.EmpresaMigradorService;
 
 @Service
 public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
+	protected static final Logger logger = LogManager.getLogger(EmpresaMigradorServiceImpl.class);
 
 	@Autowired
 	private AplicacionUsuarioRepository repository;
-	
+
 	private Serializer serializer = new Persister();;
 	private EmpresaBusiness business = new EmpresaBusiness();
 
@@ -36,7 +39,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 			DocEmpresa oDocEmpresa = serializer.read(DocEmpresa.class, FileServiceImpl.archivo);
 
 			List<AplicacionUsuario> lAplicacionUsuario = listarAplicacionUsuario(oDocEmpresa.getMnemonico());
-			
+
 			switch (pMigradorEmpresa.getVersion()) {
 			case "2.1":
 				oDocEmpresa = business.convertirVersion21(oDocEmpresa, pMigradorEmpresa, lAplicacionUsuario);
@@ -56,6 +59,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -84,11 +88,12 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 			oDocEmpresa = business.filtrarAplicacion(oDocEmpresa, pAplicacion);
 
 			business.gestionarArchivos(oDocEmpresa);
-			
+
 			return oDocEmpresa;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -103,6 +108,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -126,6 +132,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -141,6 +148,7 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
@@ -159,12 +167,19 @@ public class EmpresaMigradorServiceImpl implements EmpresaMigradorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.print(e);
+			logger.error(e.getMessage(), e);
 			return null;
 		}
 	}
 
-	
-	private List<AplicacionUsuario> listarAplicacionUsuario(String empresa) {
-		return this.repository.listarAplicacionUsuario(ConexionBDServiceImpl.conexionBD, empresa);
+	private List<AplicacionUsuario> listarAplicacionUsuario(String empresa) throws MigradorException {
+		try {
+			return this.repository.listarAplicacionUsuario(ConexionBDServiceImpl.conexionBD, empresa);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print(e);
+			logger.error(e.getMessage(), e);
+			return null;
+		}
 	}
 }
