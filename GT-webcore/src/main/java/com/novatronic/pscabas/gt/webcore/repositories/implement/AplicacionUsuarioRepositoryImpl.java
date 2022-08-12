@@ -14,7 +14,6 @@ import com.novatronic.pscabas.gt.webcore.config.Datasource;
 import com.novatronic.pscabas.gt.webcore.domains.entities.AplicacionUsuario;
 import com.novatronic.pscabas.gt.webcore.domains.entities.ConexionBD;
 import com.novatronic.pscabas.gt.webcore.repositories.AplicacionUsuarioRepository;
-import com.novatronic.pscabas.gt.webcore.services.implement.AplicacionMigradorServiceImpl;
 
 @Component
 public class AplicacionUsuarioRepositoryImpl implements AplicacionUsuarioRepository {

@@ -50,7 +50,23 @@ export class MigrarAplicacionComponent implements OnInit {
           })
         }
       },
-      error: (error) => { "Error: " + console.log(error) }
+      error: (error) => { 
+        "Error: " + console.log(error);
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'error',
+          title: 'Migración fallida'
+        })
+     }
     })
   }
 

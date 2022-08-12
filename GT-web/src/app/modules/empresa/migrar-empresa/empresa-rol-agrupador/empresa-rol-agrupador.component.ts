@@ -75,7 +75,7 @@ export class EmpresaRolAgrupadorComponent implements OnInit {
     this.serviceEmpresa.renombrarRolPadre(this.lRolPadreReq).subscribe({
       next: (result: any) => {
         //console.log(result.data);
-        if(result.data!=null){
+        if (result.data != null) {
           this.serviceFile.getFile(this.serviceFile.nombreArchivo);
           Swal.mixin({
             toast: true,
@@ -93,7 +93,23 @@ export class EmpresaRolAgrupadorComponent implements OnInit {
           })
         }
       },
-      error: (error) => { 'Error: ' + console.log(error) }
+      error: (error) => {
+        "Error: " + console.log(error);
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'error',
+          title: 'Migración fallida'
+        })
+      }
     })
   }
 

@@ -13,7 +13,6 @@ import com.novatronic.pscabas.gt.webcore.domains.esquema.DocAplicacion;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Permiso;
 import com.novatronic.pscabas.gt.webcore.domains.esquema.Rol;
 import com.novatronic.pscabas.gt.webcore.exception.MigradorException;
-import com.novatronic.pscabas.gt.webcore.services.implement.AplicacionMigradorServiceImpl;
 import com.novatronic.pscabas.gt.webcore.services.implement.FileServiceImpl;
 import com.novatronic.pscabas.gt.webcore.util.Constantes;
 
